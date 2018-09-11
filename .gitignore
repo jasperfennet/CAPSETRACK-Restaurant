@@ -1,0 +1,10 @@
+# Binaries
+.jar
+.rar
+.class
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
