@@ -1,7 +1,7 @@
 # Binaries
-.jar
-.rar
-.class
+*.jar
+*.rar
+*.class
 
 # IntelliJ project files 
 *.iml
