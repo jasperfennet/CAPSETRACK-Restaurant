@@ -1,22 +1,23 @@
 package Tests;
 
-
 import Models.Booking;
 import Models.Extra;
 import Models.Guest;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BookingTest {
 
     private Booking booking;
     @BeforeEach
     void setUp() {
-
-        booking = new Booking(new Guest(),1,new Date(),3, new Extra("chair", 0), new Bestelling());
+        booking = new Booking(new Guest(),1,new Date(), 4, new ArrayList<Extra>(), new ArrayList<Order>());
     }
 
     @Test
@@ -40,7 +41,35 @@ class BookingTest {
     }
 
     @Test
-    void getExtra() {
-        assertNotNull(booking.getExtra());
+    void getOrders() {
+        assertNotNull(booking.getOrders());
+    }
+
+    @Test
+    void addExtra() {
+        booking.getExtras().add(new Extra("name", 10.0));
+        assertTrue(booking.getExtras().size() == 1);
+    }
+
+    @Test
+    void removeExtra() {
+        booking.getExtras().add(new Extra("name", 10.0));
+        assertTrue(booking.getExtras().size() == 1);
+        booking.getExtras().remove(0);
+        assertTrue(booking.getExtras().size() == 0);
+    }
+
+    @Test
+    void addOrder() {
+        booking.getOrders().add(new Order());
+        assertTrue(booking.getOrders().size() == 1);
+    }
+
+    @Test
+    void removeOrder() {
+        booking.getOrders().add(new Order());
+        assertTrue(booking.getOrders().size() == 1);
+        booking.getOrders().remove(0);
+        assertTrue(booking.getOrders().size() == 0);
     }
 }

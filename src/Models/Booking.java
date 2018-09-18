@@ -1,5 +1,6 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Booking {
@@ -8,15 +9,16 @@ public class Booking {
     private int id;
     private Date date;
     private int amountOfPersons;
-    private Extra extra;
-//    private Bestelling bestelling;
+    private ArrayList<Extra> extras;
+    private ArrayList<Order> orders;
 
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, Extra extra) {
+    public Booking(Guest guest, int id, Date date, int amountOfPersons, ArrayList<Extra> extras, ArrayList<Order> orders) {
         this.guest = guest;
         this.id = id;
         this.date = date;
         this.amountOfPersons = amountOfPersons;
-        this.extra = extra;
+        this.extras = extras;
+        this.orders = orders;
 
     }
 
@@ -52,11 +54,28 @@ public class Booking {
         this.amountOfPersons = amountOfPersons;
     }
 
-    public Extra getExtra() {
-        return extra;
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
 
-    public void setExtra(Extra extra) {
-        this.extra = extra;
+    public ArrayList<Extra> getExtras() {
+        return extras;
     }
+
+    public void addExtra(Extra extra) {
+        extras.add(extra);
+    }
+
+    public void removeExtra(Extra extra) {
+        extras.remove(extra);
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
+
+    public void removeOrder(Order order) {
+        orders.remove(order);
+    }
+
 }
