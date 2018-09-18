@@ -3,23 +3,22 @@ package Tests;
 import Models.Address;
 import Models.Ingredient;
 import Models.Supplier;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IngredientTest {
     private Ingredient ingredient;
     private Supplier supplier;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         supplier = new Supplier(
                 "Meat Delivery",
                 new Address("Streetname", 123, "", "541000", "Wuhan"),
                 "0612354678",
                 "NL12BANK1234567810");
-
         ingredient = new Ingredient("Strawberry's", "Kilo", 10, 20.00, supplier, "Strawberry Fever");
     }
 
@@ -58,13 +57,13 @@ public class IngredientTest {
 
     @Test
     public void getPrice() {
-        assertEquals(20.00, ingredient.getPrice(), 0.0);
+        assertEquals(20.00, ingredient.getPrice());
     }
 
     @Test
     public void setPrice() {
         ingredient.setPrice(21.00);
-        assertEquals(21.00, ingredient.getPrice(), 0.0);
+        assertEquals(21.00, ingredient.getPrice());
     }
 
     @Test

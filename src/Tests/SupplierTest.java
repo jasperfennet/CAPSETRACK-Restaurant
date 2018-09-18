@@ -2,19 +2,18 @@ package Tests;
 
 import Models.Address;
 import Models.Supplier;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SupplierTest {
     private Supplier supplier;
     private Address address;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         address = new Address("Streetname", 155, "", "541000", "Wuhan");
-
         supplier = new Supplier("MeatDelivery", address, "0612345678", "NL12BANK1234567810");
     }
 
@@ -50,7 +49,6 @@ public class SupplierTest {
     public void setPhoneNR() {
         supplier.setPhoneNR("0698765432");
         assertEquals("0698765432", supplier.getPhoneNR());
-
     }
 
     @Test
@@ -62,6 +60,5 @@ public class SupplierTest {
     public void setRekeningNr() {
         supplier.setRekeningNr("CH12BANK1234567810");
         assertEquals("CH12BANK1234567810", supplier.getRekeningNr());
-
     }
 }

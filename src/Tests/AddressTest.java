@@ -1,15 +1,16 @@
 package Tests;
 
 import Models.Address;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class AddressTest {
     private Address address;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         address = new Address("Streetname", 155, "", "541000", "Wuhan");
     }
