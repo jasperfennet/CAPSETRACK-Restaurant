@@ -3,6 +3,8 @@ package Models;
 import java.sql.Time;
 
 public class Order {
+
+   private Order(int orderId, int menuItem, int tableNumber, String orderStatus, Time time){}
  //
     private int orderId;
     private int menuItem;
