@@ -1,16 +1,24 @@
 package Models;
 
-import java.sql.Time;
+import java.util.Date;
+
 
 public class Order {
 
-   private Order(int orderId, int menuItem, int tableNumber, String orderStatus, Time time){}
- //
+    public Order(int orderId, int menuItem, int tableNumber, String orderStatus, Date time) {
+        this.orderId = orderId;
+        this.menuItem = menuItem;
+        this.tableNumber = tableNumber;
+        this.orderStatus = orderStatus;
+        this.time = time;
+    }
+
+    //
     private int orderId;
     private int menuItem;
     private int tableNumber;
     private String orderStatus;
-    private Time time;
+    private Date time;
 
     public int getOrderId() {
         return orderId;
@@ -44,11 +52,13 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
+
+
 }
