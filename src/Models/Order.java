@@ -1,19 +1,18 @@
 package Models;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Order {
     private int orderId;
-    private List<String> menuItems= new ArrayList<>();
+    private List<MenuItem> menuItems= new ArrayList<>();
     private int tableNumber;
     private String orderStatus;
     private Date time;
 
     public Order(int orderId, List<String> menuItems, int tableNumber, String orderStatus, Date time) {
         this.orderId = orderId;
-        this.menuItems = menuItems;
+        this.MenuItem = menuItems;
         this.tableNumber = tableNumber;
         this.orderStatus = orderStatus;
         this.time = time;
@@ -28,11 +27,11 @@ public class Order {
     }
 
     public List<String> getMenuItems() {
-        return menuItems;
+        return MenuItem;
     }
 
     public void setMenuItems(List<String> menuItems) {
-        this.menuItems = menuItems;
+        this.MenuItem = menuItems;
     }
 
     public int getTableNumber() {
