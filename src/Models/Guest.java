@@ -21,6 +21,7 @@ public class Guest {
     public Guest(String firstName, String lastName) {
         setFirstName(firstName);
         setLastName(lastName);
+        setGuestID();
 
     }
 
@@ -29,6 +30,7 @@ public class Guest {
         setFirstName(firstName);
         setLastName(lastName);
         setEmailAddress(emailAddress);
+        setGuestID();
     }
 
     // Constructor for all fields
@@ -40,6 +42,7 @@ public class Guest {
         setAddress(address);
         setPostCode(postCode);
         setCity(city);
+        setGuestID();
     }
 
     // Getters and Setters
@@ -91,9 +94,7 @@ public class Guest {
         this.city = city;
     }
 
-    public int getCurrentID() { return Guest.currentID; }
-
-    public void setGuestID() {
+    private void setGuestID() {
         this.guestID = Guest.currentID + 1;
         Guest.currentID = this.guestID;
     }
