@@ -1,19 +1,48 @@
 package Tests;
 
 import Models.MenuItem;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MenuItemTest {
+class MenuItemTest {
 
+    private MenuItem menuItem;
+    private ArrayList<Ingredient> ingredients;
+
+    @BeforeEach
+    public void setUp() throws Exception{
+        ingredients = new ArrayList<Ingredient>();
+    }
     @Test
-    public void checkIfImagePathIsNotNull(){
-        MenuItem tester = new MenuItem();
-        String pathToTest = "src\\Images\\test.jpg";
-        assertNotNull(tester.setImage(pathToTest));
+    void getImage() {
+
     }
 
+    @Test
+    void setImage() {
+        String pathToTest = "src\\Images\\test.jpg";
+        assertNotNull(menuItem.setImage(pathToTest));
+    }
 
+    @Test
+    void getMenuDescription() {
+    }
+
+    @Test
+    void setMenuDescription() {
+    }
+
+    @Test
+    void getIngredientList() {
+    }
+
+    @Test
+    void setIngredientList() {
+    }
+
+    @Test
+    void addIngredient() {
+    }
 }
