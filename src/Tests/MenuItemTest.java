@@ -1,5 +1,6 @@
 package Tests;
 
+<<<<<<< HEAD
 import Models.Address;
 import Models.MenuItem;
 import Models.Ingredient;
@@ -10,12 +11,19 @@ import org.junit.jupiter.api.Test;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+=======
+import Models.MenuItem;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+>>>>>>> 7067be5fc779f42f74f7babfb98f71f1d8625cdc
 import static org.junit.jupiter.api.Assertions.*;
 
 class MenuItemTest {
 
     private MenuItem menuItem;
     private ArrayList<Ingredient> ingredients;
+<<<<<<< HEAD
     private Supplier supplier;
     private Address address;
     private Ingredient ingr1, ingr2;
@@ -41,11 +49,26 @@ class MenuItemTest {
     void getImage() {
         BufferedImage img = menuItem.setImage(pathToImage);
         assertEquals(img, menuItem.getImage());
+=======
+
+    @BeforeEach
+    public void setUp() throws Exception{
+        ingredients = new ArrayList<Ingredient>();
+    }
+    @Test
+    void getImage() {
+
+>>>>>>> 7067be5fc779f42f74f7babfb98f71f1d8625cdc
     }
 
     @Test
     void setImage() {
+<<<<<<< HEAD
         assertNotNull(menuItem.setImage(pathToImage));
+=======
+        String pathToTest = "src\\Images\\test.jpg";
+        assertNotNull(menuItem.setImage(pathToTest));
+>>>>>>> 7067be5fc779f42f74f7babfb98f71f1d8625cdc
     }
 
     @Test
