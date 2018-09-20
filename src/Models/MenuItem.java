@@ -39,7 +39,7 @@ public class MenuItem {
     public Image getImage(){
         return image;
     }
-    public Image setImage(String path){
+    public BufferedImage setImage(String path){
         try {
             imageFile = new File(path);
             System.out.println(path);
@@ -68,7 +68,7 @@ public class MenuItem {
     public void addIngredient(Ingredient ingredient){
         this.ingredients.add(ingredient);
     }
-    /*public void removeIngredient(Ingredient ingredient){
+    public void removeIngredient(Ingredient ingredient){
         this.ingredients.remove(ingredient);
-    }*/
+    }
 }
