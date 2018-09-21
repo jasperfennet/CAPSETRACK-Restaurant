@@ -101,5 +101,16 @@ public class Guest {
 
     public int getGuestID() { return guestID; }
 
-
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "guestID=" + guestID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", address='" + address + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

@@ -45,4 +45,14 @@ public class Supplier {
   public void setBillingNr(String billingNr) {
     this.billingNr = billingNr;
   }
+
+  @Override
+  public String toString() {
+    return "Supplier{" +
+            "name='" + name + '\'' +
+            ", address=" + address +
+            ", phoneNR='" + phoneNR + '\'' +
+            ", billingNr='" + billingNr + '\'' +
+            '}';
+  }
 }

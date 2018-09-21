@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class MenuItem {
 
+    public static ArrayList<MenuItem> menuItems = new ArrayList<>();
     // price(), giveAllergies()?
     private BufferedImage image;
     private File imageFile;
@@ -22,7 +23,7 @@ public class MenuItem {
 
     private ArrayList<Ingredient> ingredients;
 
-    public MenuItem(ArrayList<Ingredient> ingredients){
+    public MenuItem(ArrayList<Ingredient> ingredients, String menuDescription){
         //Photo properties
         image = null;
         imageFile = null;
@@ -30,10 +31,9 @@ public class MenuItem {
         imageWidth = 200;
         imageHeight = 200; // both to be changed later
         setImage(pathString);
-
-        menuDescription = "";
-
+        this.menuDescription = menuDescription;
         this.ingredients = ingredients;
+        menuItems.add(this);
     }
 
     public Image getImage(){
@@ -42,7 +42,6 @@ public class MenuItem {
     public BufferedImage setImage(String path){
         try {
             imageFile = new File(path);
-            System.out.println(path);
             image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(imageFile);
         }
@@ -70,5 +69,13 @@ public class MenuItem {
     }
     public void removeIngredient(Ingredient ingredient){
         this.ingredients.remove(ingredient);
+    }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                ", menuDescription='" + menuDescription + '\'' +
+                ", ingredients=" + ingredients +
+                "}";
     }
 }

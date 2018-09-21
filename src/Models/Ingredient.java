@@ -66,4 +66,16 @@ public class Ingredient {
   public void setAllergy(String allergy) {
     this.allergy = allergy;
   }
+
+  @Override
+  public String toString() {
+    return "Ingredient{" +
+            "name='" + name + '\'' +
+            ", unit='" + unit + '\'' +
+            ", amount=" + amount +
+            ", price=" + price +
+            ", supplier=" + supplier +
+            ", allergy='" + allergy + '\'' +
+            '}';
+  }
 }

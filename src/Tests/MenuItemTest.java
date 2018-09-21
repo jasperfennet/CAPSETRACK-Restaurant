@@ -33,7 +33,7 @@ class MenuItemTest {
         ingredients.add(ingr1);
         ingredients.add(ingr2);
 
-        menuItem = new MenuItem(ingredients);
+        menuItem = new MenuItem(ingredients, "kindermenu");
 
         pathToImage = "src\\Images\\test.jpg";
     }
