@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public abstract class Table {
 
+    private static int currentNumber = 0;
     private int number, capacity;
     private ArrayList<Booking> bookings;
     private TableStatus status;
 
     //todo:
-    //table status enum: RESERVED, AVAILABLE, TOO LATE.
     //voor een logica laag: een functie die de tafelnummers naast de bookings legt om te zien welke naam e.d. aan een tafel zit
     //====
     //voor aanmaken tafel: tafelnummer genereren door steeds 1 op te hogen. Zoals in guest.
@@ -17,13 +17,15 @@ public abstract class Table {
     public Table(){
         this.bookings = new ArrayList<Booking>();
         status = TableStatus.AVAILABLE;
+        setNumber();
     }
 
     public int getNumber() {
         return this.number;
     }
-    public void setNumber(int number){
-        this.number = number;
+    private void setNumber(){
+        this.number = Table.currentNumber + 1;
+        Table.currentNumber = this.number;
     }
 
     public int getCapacity() {
