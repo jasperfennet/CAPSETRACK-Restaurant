@@ -6,46 +6,16 @@ public class Guest {
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private String address;
-    private String postCode;
-    private String city;
+    private Address address;
 
-
-    /* Three constructors:
-    Only fist name and last name
-    Only fist name, last name and email address
-    All fields
-     */
-
-    // Constructor for only first name and last name
-    public Guest(String firstName, String lastName) {
-        setFirstName(firstName);
-        setLastName(lastName);
+    public Guest(String firstName, String lastName, String emailAddress, Address address) {
         setGuestID();
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.address = address;
     }
 
-    // Constructor for only fist name, last name and email address
-    public Guest(String firstName, String lastName, String emailAddress) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setEmailAddress(emailAddress);
-        setGuestID();
-    }
-
-    // Constructor for all fields
-    public Guest(String firstName, String lastName, String emailAddress,
-                           String address, String postCode, String city) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setEmailAddress(emailAddress);
-        setAddress(address);
-        setPostCode(postCode);
-        setCity(city);
-        setGuestID();
-    }
-
-    // Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -70,28 +40,12 @@ public class Guest {
         this.emailAddress = emailAddress;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     private void setGuestID() {
@@ -99,7 +53,9 @@ public class Guest {
         Guest.currentID = this.guestID;
     }
 
-    public int getGuestID() { return guestID; }
+    public int getGuestID() {
+        return guestID;
+    }
 
 
 }
