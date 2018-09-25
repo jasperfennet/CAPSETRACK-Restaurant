@@ -11,3 +11,6 @@
 
 # Log file
 *.log
+
+# Out folder
+out/
