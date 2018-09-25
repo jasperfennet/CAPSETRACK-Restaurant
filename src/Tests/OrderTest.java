@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
 
     private Order order;
 
+
     List<MenuItem> menuItems = new ArrayList<>();
+
 
     @BeforeEach
     void setUp() {
@@ -51,6 +54,7 @@ class OrderTest {
         assertNotNull(order.getMenuItems(), "kaas");
     }
 
+
     @Test
     void getMenuItems() {
         assertNotNull(order.getMenuItems());
@@ -84,8 +88,10 @@ class OrderTest {
 
     @Test
     void getDate() {
+
         Date date = new Date();
         order.setTime(date);
         assertEquals(order.getTime(), date);
     }
+
 }

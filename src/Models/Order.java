@@ -28,6 +28,7 @@ public class Order {
 
     public List<MenuItem> getMenuItems() {
         return menuItems;
+
     }
 
     public void setMenuItems(List<MenuItem> menuItems) {
