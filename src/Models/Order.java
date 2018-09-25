@@ -10,9 +10,9 @@ public class Order {
     private String orderStatus;
     private Date time;
 
-    public Order(int orderId, List<String> menuItems, int tableNumber, String orderStatus, Date time) {
+    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, Date time) {
         this.orderId = orderId;
-        this.MenuItem = menuItems;
+        this.menuItems = menuItems;
         this.tableNumber = tableNumber;
         this.orderStatus = orderStatus;
         this.time = time;
@@ -26,12 +26,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<String> getMenuItems() {
-        return MenuItem;
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
     }
 
-    public void setMenuItems(List<String> menuItems) {
-        this.MenuItem = menuItems;
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 
     public int getTableNumber() {

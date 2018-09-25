@@ -1,4 +1,6 @@
-package Models;
+package Tests;
+import Models.MenuItem;
+import Models.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -10,14 +12,11 @@ class OrderTest {
 
     private Order order;
 
-    List<String> menuItems= new ArrayList<>();
+    List<MenuItem> menuItems= new ArrayList<>();
 
     @BeforeEach
     void setUp() {
 
-        menuItems.add("Brood");
-        menuItems.add("Kaas");
-        menuItems.add("Boter");
 
         order = new Order(5,menuItems,48,"aanwezig",new Date());
     }
@@ -36,11 +35,11 @@ class OrderTest {
         assertNotEquals(order.getOrderId(), 4);
             }
 
-        @Test
-     void setMenuItems() {
-        order.setMenuItems(menuItems);
-        assertNotNull(order.getMenuItems(), "kaas");
-}
+//        @Test
+//     void setMenuItems() {
+//        order.setMenuItems(menuItems);
+//        assertNotNull(order.getMenuItems(), "kaas");
+//}
     @Test
     void getMenuItems() {
         assertNotNull(order.getMenuItems());
