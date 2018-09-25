@@ -17,7 +17,7 @@ public class IngredientTest {
     supplier =
         new Supplier(
             "Meat Delivery",
-            new Address("Streetname", 123, "", "541000", "Wuhan"),
+            new Address("Streetname", 123, "", "541000", "Wuhan", "China"),
             "0612354678",
             "NL12BANK1234567810");
     ingredient = new Ingredient("Strawberry's", "Kilo", 10, 20.00, supplier, "Strawberry Fever");
@@ -77,7 +77,7 @@ public class IngredientTest {
     Supplier supplier2 =
         new Supplier(
             "Meat Delivery",
-            new Address("Streetname", 123, "", "541000", "Wuhan"),
+            new Address("Streetname", 123, "", "541000", "Wuhan", "China"),
             "0612354678",
             "NL12BANK1234567810");
 

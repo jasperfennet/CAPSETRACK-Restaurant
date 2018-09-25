@@ -1,7 +1,7 @@
 package Models;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Booking {
 
@@ -9,17 +9,18 @@ public class Booking {
     private int id;
     private Date date;
     private int amountOfPersons;
-    private ArrayList<Extra> extras;
-    private ArrayList<Order> orders;
+    private List<Extra> extras;
+    private List<Order> orders;
+    private List<Table> table;
 
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, ArrayList<Extra> extras, ArrayList<Order> orders) {
+    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
         this.date = date;
         this.amountOfPersons = amountOfPersons;
         this.extras = extras;
         this.orders = orders;
-
+        this.table = table;
     }
 
     public Guest getGuest() {
@@ -54,11 +55,11 @@ public class Booking {
         this.amountOfPersons = amountOfPersons;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public ArrayList<Extra> getExtras() {
+    public List<Extra> getExtras() {
         return extras;
     }
 
@@ -78,4 +79,11 @@ public class Booking {
         orders.remove(order);
     }
 
+    public List<Table> getTable() {
+        return table;
+    }
+
+    public void setTable(List<Table> table) {
+        this.table = table;
+    }
 }

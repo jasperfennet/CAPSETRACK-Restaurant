@@ -1,14 +1,15 @@
 package Models;
 
-import java.util.ArrayList;
-
 public abstract class Table {
 
+    //private static int currentNumber = 0;
     private int number, capacity;
-    private ArrayList<Booking> bookings;
+    private TableStatus status;
 
-    public Table(){
-        this.bookings = new ArrayList<Booking>();
+    public Table(int number, int capacity) {
+        this.number = number;
+        this.capacity = capacity;
+        this.status = TableStatus.AVAILABLE;
     }
 
     public int getNumber() {
@@ -17,25 +18,22 @@ public abstract class Table {
     public void setNumber(int number){
         this.number = number;
     }
+    /*private void setNumber(){
+        this.number = Table.currentNumber + 1;
+        Table.currentNumber = this.number;
+    }*/
 
     public int getCapacity() {
         return this.capacity;
     }
-    public void setCapacity(int capacity){
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public ArrayList<Booking> getBookings(){
-        return this.bookings;
+    public TableStatus getStatus(){
+        return this.status;
     }
-    public void setBookings(ArrayList<Booking> bookings){
-        this.bookings = bookings;
+    public void changeStatus(TableStatus status){
+        this.status = status;
     }
-    public void addBooking(Booking booking){
-        this.bookings.add(booking);
-    }
-    public void removeBooking(Booking booking){
-        this.bookings.remove(booking);
-    }
-
 }

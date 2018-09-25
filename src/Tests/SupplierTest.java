@@ -13,7 +13,7 @@ public class SupplierTest {
 
   @BeforeEach
   public void setUp() throws Exception {
-    address = new Address("Streetname", 155, "", "541000", "Wuhan");
+    address = new Address("Streetname", 155, "", "541000", "Wuhan", "China");
     supplier = new Supplier("MeatDelivery", address, "0612345678", "NL12BANK1234567810");
   }
 
@@ -35,7 +35,7 @@ public class SupplierTest {
 
   @Test
   public void setAddress() {
-    Address address2 = new Address("Streetname", 123, "", "541000", "Wuhan");
+    Address address2 = new Address("Streetname", 123, "", "541000", "Wuhan", "China");
     supplier.setAddress(address2);
     assertEquals(address2, supplier.getAddress());
   }
