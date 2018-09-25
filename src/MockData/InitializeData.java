@@ -19,33 +19,40 @@ public class InitializeData {
 
     public InitializeData() {
         for (int i = 0; i < 100; i++) {
+            Address address = new Address(
+                    "" + ('a' + i) + ('b' + i) + "street",
+                    i,
+                    "",
+                    "" + ('a' + i) + ('b' + i) + ('c' + i),
+                    "" + 'a' + ('b' + i) + "city",
+                    "" + ('c' + i) + "land");
             guests.add(new Guest("" + 'a' + i,
                     "" + 'b' + i,
                     "" + ('a' + i) + "@" + ('b' + i) + ".com",
-                    "" + ('a' + i) + ('b' + i) + "street",
-                    "" + i,
-                    "" + ('a' + i) + ('b' + i) + ('c' + i)));
+                    address));
             if(i < 50) {
-                tables.add(new RoundTable());
+                tables.add(new RoundTable(i));
             }else{
-                tables.add(new SquareTable());
+                tables.add(new SquareTable(i));
             }
             extras.add(new Extra(""+i, i*(new Random().nextInt(5))));
             ArrayList<Extra> tempExtras = new ArrayList<>();tempExtras.add(extras.get(i));
-            Address address = new Address("" + 'a' + i,
+            Address address2 = new Address(
+                    "" + ('d' + i) + ('e' + i) + "street",
                     i,
-                    "" + ('a' + i) + "@" + ('b' + i) + ".com",
-                    "" + ('a' + i) + ('b' + i) + "street",
-                    "" + i);
+                    "",
+                    "" + ('x' + i) + ('y' + i) + ('z' + i),
+                    "" + 'a' + ('b' + i) + "city",
+                    "" + ('c' + i) + "land");
             Supplier supplier = new Supplier("" + ('a' + i),
-                    address,
+                    address2,
                     ""+i + "" + (i+1) + "" + (i+2),
                     ""+ i + "" + (i+1) + "" + (i+2));
             ingredients.add(new Ingredient(""+('a' + i),"gram", i,i, supplier, "" + ('c' + i)));
 
-            menuItems.add(new MenuItem(ingredients));
+            menuItems.add(new MenuItem("abcdefg", ingredients));
             orders.add(new Order(i,menuItems,i,"in progress", new Date()));
-            bookings.add(new Booking(guests.get(i),i,new Date(),new Random().nextInt(6),tempExtras, orders));
+            bookings.add(new Booking(guests.get(i),i,new Date(),new Random().nextInt(6),tempExtras, orders, tables));
         }
     }
 
