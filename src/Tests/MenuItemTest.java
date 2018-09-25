@@ -1,21 +1,17 @@
 package Tests;
 
 import Models.Address;
-import Models.MenuItem;
 import Models.Ingredient;
+import Models.MenuItem;
 import Models.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MenuItemTest {
 
     private MenuItem menuItem;
-    private String pathToImage;
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -29,21 +25,7 @@ class MenuItemTest {
         ingredients.add(ingr1);
         ingredients.add(ingr2);
 
-        menuItem = new MenuItem(ingredients);
-
-        pathToImage = "src\\Images\\test.jpg";
-    }
-
-    @Test
-    void getImage() {
-        BufferedImage img = menuItem.setImage(pathToImage);
-        assertEquals(img, menuItem.getImage());
-
-    }
-
-    @Test
-    void setImage() {
-        assertNotNull(menuItem.setImage(pathToImage));
+        menuItem = new MenuItem("Menu", ingredients);
     }
 
     @Test
