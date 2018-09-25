@@ -1,13 +1,12 @@
 package Tests;
 
-import Models.Booking;
-import Models.Extra;
-import Models.Guest;
+import Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,9 +14,32 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class BookingTest {
 
     private Booking booking;
+    private MenuItem menuItem;
+
+
     @BeforeEach
     void setUp() {
-        booking = new Booking(new Guest(),1,new Date(), 4, new ArrayList<Extra>(), new ArrayList<Order>());
+        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands");
+
+        Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
+        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
+
+        List<Table> tableList = new ArrayList<>();
+        tableList.add(new RoundTable(1));
+        tableList.add(new SquareTable(2));
+
+        menuItem = new MenuItem("Menu 1", new ArrayList<Ingredient>());
+        menuItem.addIngredient(ingredient1);
+
+        booking =
+                new Booking(new Guest("Henk", "Smit", "henk.smit@email.com",
+                        new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands")),
+                        1,
+                        new Date(), 4,
+                        new ArrayList<Extra>(),
+                        new ArrayList<Order>(),
+                        tableList
+                );
     }
 
     @Test
@@ -61,15 +83,21 @@ class BookingTest {
 
     @Test
     void addOrder() {
-        booking.getOrders().add(new Order());
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(this.menuItem);
+        booking.getOrders().add(new Order(1, menuItems, 12, "Ontvangen", new Date()));
         assertTrue(booking.getOrders().size() == 1);
     }
 
     @Test
     void removeOrder() {
-        booking.getOrders().add(new Order());
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(this.menuItem);
+        booking.getOrders().add(new Order(1, menuItems, 12, "Ontvangen", new Date()));
+
         assertTrue(booking.getOrders().size() == 1);
         booking.getOrders().remove(0);
         assertTrue(booking.getOrders().size() == 0);
     }
+
 }

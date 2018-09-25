@@ -2,8 +2,9 @@ package Models;
 
 public class SquareTable extends Table {
 
-    public SquareTable(){
-        setCapacity(4);
-    }
+    public static final int CAPACITY_SQUARETABLE = 12;
 
+    public SquareTable(int tableNumber) {
+        super(tableNumber, CAPACITY_SQUARETABLE);
+    }
 }
