@@ -17,7 +17,6 @@ class TableTest {
     private List<Table> squareTables = new ArrayList<Table>();
     private List<Table> roundTables = new ArrayList<Table>();
     private int tablesListSize;
-    private List<Table> tables = new ArrayList<Table>();
     private TableStatus available, reserved, tooLate;
 
     @BeforeEach
