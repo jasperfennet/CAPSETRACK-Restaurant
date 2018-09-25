@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Make new menu item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="menu.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>Molveno Lake Resort</h1>
+    </header>
+    <main>
+    <div id="menuInput">
+        <div id="flexText">
+            <ul>
+                <li>Name:<input type="text" name="name" placeholder="Name" class="clearInput"></li>
+                <li>Description: <input type="text" name="description" placeholder="Description" class="clearInput"></li>
+                <li>Ingredients:<select id="ingredientList">
+                    <option value="Chicken">Chicken</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Sauce">Sauce</option>
+                </select>
+                <button id="addIngredient" onclick="addIngredient()">+</button>
+                <button id="deleteIngredient">-</button>
+                <div id="selectedIngredients"></div>
+            </li>
+                <li>Image:<input type="file" name="file" accept=".jpg,.png,.jpeg" class="clearInput"></li>
+            </ul>
+        </div>
+    </div>
+        <button id="confirm">Confirm</button>
+        <button id="restore">Restore</button>
+        <button id="back">Go back</button>
+        <button id="delete">Delete</button>
+    
+    </div>
+</main>
+    <footer></footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>

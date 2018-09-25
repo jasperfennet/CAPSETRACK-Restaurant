@@ -25,7 +25,7 @@ class MenuItemTest {
         ingredients.add(ingr1);
         ingredients.add(ingr2);
 
-        menuItem = new MenuItem("Menu", ingredients);
+        menuItem = new MenuItem("Menu", "Description", ingredients);
     }
 
     @Test
@@ -50,5 +50,13 @@ class MenuItemTest {
 
     @Test
     void removeIngredient() {
+    }
+
+    @Test
+    void getName() {
+    }
+
+    @Test
+    void setName() {
     }
 }
