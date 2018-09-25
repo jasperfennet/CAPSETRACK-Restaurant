@@ -1,6 +1,5 @@
 package Models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem {
@@ -8,7 +7,7 @@ public class MenuItem {
     private String menuDescription;
     private List<Ingredient> ingredients;
 
-    public MenuItem(String menuDescription, ArrayList<Ingredient> ingredients) {
+    public MenuItem(String menuDescription, List<Ingredient> ingredients) {
         this.menuDescription = menuDescription;
         this.ingredients = ingredients;
     }
@@ -25,7 +24,7 @@ public class MenuItem {
         return this.ingredients;
     }
 
-    public void setIngredientList(ArrayList<Ingredient> ingredients) {
+    public void setIngredientList(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

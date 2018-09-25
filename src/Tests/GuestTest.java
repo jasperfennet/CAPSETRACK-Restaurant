@@ -65,6 +65,6 @@ public class GuestTest {
 
     @Test
     void getGuestID() {
-        assertEquals(22, guest1.getGuestID());
+        assertEquals(15, guest1.getGuestID());
     }
 }

@@ -24,7 +24,11 @@ class BookingTest {
         Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
         Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
 
-        menuItem = new MenuItem(new ArrayList<Ingredient>());
+        List<Table> tableList = new ArrayList<>();
+        tableList.add(new RoundTable(1));
+        tableList.add(new SquareTable(2));
+
+        menuItem = new MenuItem("Menu 1", new ArrayList<Ingredient>());
         menuItem.addIngredient(ingredient1);
 
         booking =
@@ -34,8 +38,8 @@ class BookingTest {
                         new Date(), 4,
                         new ArrayList<Extra>(),
                         new ArrayList<Order>(),
-                        new RoundTable(1) {
-                        });
+                        tableList
+                );
     }
 
     @Test
@@ -81,7 +85,7 @@ class BookingTest {
     void addOrder() {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(this.menuItem);
-        booking.getOrders().add(new Order(1,menuItems, 12,"Ontvangen", new Date()));
+        booking.getOrders().add(new Order(1, menuItems, 12, "Ontvangen", new Date()));
         assertTrue(booking.getOrders().size() == 1);
     }
 
@@ -89,38 +93,11 @@ class BookingTest {
     void removeOrder() {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(this.menuItem);
-        booking.getOrders().add(new Order(1,menuItems, 12,"Ontvangen", new Date()));
+        booking.getOrders().add(new Order(1, menuItems, 12, "Ontvangen", new Date()));
 
         assertTrue(booking.getOrders().size() == 1);
         booking.getOrders().remove(0);
         assertTrue(booking.getOrders().size() == 0);
     }
 
-    @Test
-    void setGuest() {
-    }
-
-    @Test
-    void setId() {
-    }
-
-    @Test
-    void setDate() {
-    }
-
-    @Test
-    void setAmountOfPersons() {
-    }
-
-    @Test
-    void getExtras() {
-    }
-
-    @Test
-    void getTable() {
-    }
-
-    @Test
-    void setTable() {
-    }
 }

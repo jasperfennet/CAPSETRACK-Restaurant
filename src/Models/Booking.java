@@ -11,9 +11,9 @@ public class Booking {
     private int amountOfPersons;
     private List<Extra> extras;
     private List<Order> orders;
-    private Table table;
+    private List<Table> table;
 
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders, Table table) {
+    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
         this.date = date;
@@ -79,11 +79,11 @@ public class Booking {
         orders.remove(order);
     }
 
-    public Table getTable() {
+    public List<Table> getTable() {
         return table;
     }
 
-    public void setTable(Table table) {
+    public void setTable(List<Table> table) {
         this.table = table;
     }
 }
