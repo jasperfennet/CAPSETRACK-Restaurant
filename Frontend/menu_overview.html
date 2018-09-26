@@ -20,10 +20,19 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+<script>
+document.querySelector('#tableoverview').addEventListener('click' , function(ev){
+tableID = ev.target.parentElement.cells[0].innerHTML;
+console.log("value of first element in row: " + ev.target.parentElement.cells[0].innerHTML); })
+
+</script>
+
+
 <h2>Menu items</h2>
 
-<table>
+<table id="tableoverview">
     <tr>
+        <th>ID</th>
         <th width="150">Image</th>
         <th>Name</th>
         <th>Description</th>
@@ -33,6 +42,7 @@ tr:nth-child(even) {
     </tr>
   
     <tr>
+        <td>1</td>
         <td><img src="../src/Images/test.jpg" alt="Item1" width="140" height="84"></td>
         <td>Name 1</td>
         <td>Description item 1</td>
@@ -44,10 +54,11 @@ tr:nth-child(even) {
                 <tr>Ingredient 3<br></tr>
             </table>
         </td>
-        <td><button id="change">Update/Delete</button></td>
+        <td><button id="change" onclick="window.location.href='menu_update1.html'">Update/Delete</button></td>
     </tr>
   
     <tr>
+        <td>2</td>
         <td><img src="../src/Images/test.jpg" alt="Item2" width="140" height="84"></td>
         <td>Name 2</td>
         <td>Description item 2</td>
@@ -59,10 +70,11 @@ tr:nth-child(even) {
                 <tr>Ingredient 6<br></tr>
             </table>
         </td>
-        <td><button id="change">Update/Delete</button></td>
+        <td><button id="change" onclick="window.location.href='menu_update2.html'">Update/Delete</button></td>
     </tr>
   
     <tr>
+        <td>3</td>
         <td><img src="../src/Images/test.jpg" alt="Item2" width="140" height="84"></td>
         <td>Name 3</td>
         <td>Description item 3</td>
@@ -74,7 +86,7 @@ tr:nth-child(even) {
                 <tr>Ingredient 9<br></tr>
             </table>
         </td>
-        <td><button id="change">Update/Delete</button></td>
+        <td><button id="change" onclick="window.location.href='menu_update3.html'">Update/Delete</button></td>
     </tr>
 
 </table>
