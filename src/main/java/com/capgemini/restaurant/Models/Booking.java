@@ -15,14 +15,15 @@ public class Booking {
     private List<Order> orders;
     private List<Table> table;
 
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
+    public Booking(){}
+
+    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders) {
         this.guest = guest;
         this.id = id;
         this.date = date;
         this.amountOfPersons = amountOfPersons;
         this.extras = extras;
         this.orders = orders;
-        this.table = table;
     }
 
     public Guest getGuest() {
@@ -79,13 +80,5 @@ public class Booking {
 
     public void removeOrder(Order order) {
         orders.remove(order);
-    }
-
-    public List<Table> getTable() {
-        return table;
-    }
-
-    public void setTable(List<Table> table) {
-        this.table = table;
     }
 }

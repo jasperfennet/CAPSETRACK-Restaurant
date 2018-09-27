@@ -8,6 +8,8 @@ public class Guest {
     private String emailAddress;
     private Address address;
 
+    public Guest(){}
+
     public Guest(String firstName, String lastName, String emailAddress, Address address) {
         setGuestID();
         this.firstName = firstName;

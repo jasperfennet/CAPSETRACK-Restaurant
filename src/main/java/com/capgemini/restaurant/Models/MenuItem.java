@@ -4,12 +4,34 @@ import java.util.List;
 
 public class MenuItem {
 
+    private int id;
+    private String name;
     private String menuDescription;
     private List<Ingredient> ingredients;
 
-    public MenuItem(String menuDescription, List<Ingredient> ingredients) {
+    public MenuItem(){}
+
+    public MenuItem(int id, String name, String menuDescription, List<Ingredient> ingredients) {
+        this.id = id;
+        this.name = name;
         this.menuDescription = menuDescription;
         this.ingredients = ingredients;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMenuDescription() {

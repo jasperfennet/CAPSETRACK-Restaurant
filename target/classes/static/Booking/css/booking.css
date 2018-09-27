@@ -1,0 +1,27 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+ul{
+    list-style-type: none;
+}
+#booking{
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    margin:auto;
+    align-content: center;
+}
+#naw{
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+}
+input{
+    border-radius: 10px;
+}
+h1{
+    background-color: yellow;
+    display:block;
+    text-align: center;
+}
