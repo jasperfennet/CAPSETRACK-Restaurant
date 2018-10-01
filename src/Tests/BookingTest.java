@@ -28,7 +28,7 @@ class BookingTest {
         tableList.add(new Table(4, TableType.SQUARE));
      //   tableList.add(new SquareTable(2));
 
-        menuItem = new MenuItem("Menu 1", new ArrayList<Ingredient>());
+        menuItem = new MenuItem("Menu 1", "long description of menu", new ArrayList<Ingredient>());
         menuItem.addIngredient(ingredient1);
 
         booking =
