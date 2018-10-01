@@ -4,10 +4,12 @@ import java.util.List;
 
 public class MenuItem {
 
+    private String name;
     private String menuDescription;
     private List<Ingredient> ingredients;
 
-    public MenuItem(String menuDescription, List<Ingredient> ingredients) {
+    public MenuItem(String name, String menuDescription, List<Ingredient> ingredients) {
+        this.name = name;
         this.menuDescription = menuDescription;
         this.ingredients = ingredients;
     }
@@ -34,5 +36,13 @@ public class MenuItem {
 
     public void removeIngredient(Ingredient ingredient) {
         this.ingredients.remove(ingredient);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
