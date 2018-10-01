@@ -2,7 +2,6 @@ package Models;
 
 public class Table {
 
-    //private static int currentNumber = 0;
     private int number, capacity;
     private TableStatus status;
     private TableType type;
@@ -23,22 +22,17 @@ public class Table {
     public void setNumber(int number){
         this.number = number;
     }
-    /*private void setNumber(){
-        this.number = Table.currentNumber + 1;
-        Table.currentNumber = this.number;
-    }*/
+
 
     public int getCapacity() {
         return this.capacity;
-    }
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
     }
 
     public TableStatus getStatus(){
         return this.status;
     }
-    public void changeStatus(TableStatus status){
+
+    public void setStatus(TableStatus status){
         this.status = status;
     }
 
@@ -48,6 +42,7 @@ public class Table {
 
     public void setType(TableType type) {
         this.type = type;
+        this.capacity = type.getTableCapacity();
     }
 
 
