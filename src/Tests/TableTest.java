@@ -1,66 +1,68 @@
 package Tests;
 
-import Models.*;
+import Models.Table;
+import Models.TableStatus;
+import Models.TableType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class TableTest {
 
-    //todo:
-    //make a list of table that works with tabletype.
-    private List<Table> tables = new ArrayList<Table>();
-    private int tablesListSize;
-    private TableType round, square;
+    private Table roundTable;
+    private Table squareTable;
 
     @BeforeEach
     void setUp() {
-        tablesListSize = 10;
-        for(int i = 0; i < tablesListSize; i++){
-                tables.add(new Table(i+1,TableType.ROUND));
-        }
-        round = TableType.ROUND;
-        square = TableType.SQUARE;
+        roundTable = new Table(1, TableType.ROUND);
+        squareTable = new Table(2, TableType.SQUARE);
     }
 
     @Test
     void getNumber() {
-        for(int i = 0; i < tables.size(); i++){
-            assertEquals(i+1, tables.get(i).getNumber());
-        }
+        assertEquals(1, roundTable.getNumber());
+        assertEquals(2, squareTable.getNumber());
     }
 
     @Test
     void setNumber() {
-        Table t1 = new Table(1,TableType.ROUND);
-        t1.setNumber(5);
-        assertEquals(5, t1.getNumber());
-        assertNotEquals(1, t1.getNumber());
+        roundTable.setNumber(5);
+        assertEquals(5, roundTable.getNumber());
     }
 
     @Test
     void getCapacity() {
-        for(int i = 0; i < tablesListSize; i++){
-            assertEquals(12, tables.get(i).getCapacity());
-        }
-    }
+        assertEquals(4, squareTable.getCapacity());
+        assertEquals(12, roundTable.getCapacity());
 
-    @Test
-    void setCapacity() {
-        Table t1 = new Table(4 , TableType.ROUND);
-        t1.setCapacity(4);
-        assertEquals(4, t1.getCapacity());
-        assertNotEquals(6, t1.getCapacity());
     }
 
     @Test
     void getStatus() {
-        //A table is initialized with round.
-        assertEquals(round, tables.get(0).getType());
-        assertNotEquals(square, tables.get(0).getType());
+        assertEquals(TableStatus.AVAILABLE, roundTable.getStatus());
     }
 
+    @Test
+    void setStatus() {
+        roundTable.setStatus(TableStatus.TOO_LATE);
+        assertEquals(TableStatus.TOO_LATE, roundTable.getStatus());
+    }
+
+    @Test
+    void getType() {
+        assertEquals(TableType.ROUND, roundTable.getType());
+    }
+
+    @Test
+    void setType() {
+        roundTable.setType(TableType.SQUARE);
+        assertEquals(TableType.SQUARE, roundTable.getType());
+        assertEquals(4,roundTable.getCapacity());
+
+    }
 }
