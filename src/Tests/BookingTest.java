@@ -25,8 +25,8 @@ class BookingTest {
         Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
 
         List<Table> tableList = new ArrayList<>();
-        tableList.add(new RoundTable(1));
-        tableList.add(new SquareTable(2));
+        tableList.add(new Table(4, TableType.SQUARE));
+     //   tableList.add(new SquareTable(2));
 
         menuItem = new MenuItem("Menu 1", new ArrayList<Ingredient>());
         menuItem.addIngredient(ingredient1);
