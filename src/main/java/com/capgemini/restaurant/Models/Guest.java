@@ -7,6 +7,7 @@ public class Guest {
     private String lastName;
     private String emailAddress;
     private Address address;
+    private String password;
 
     public Guest(){}
 
@@ -48,6 +49,14 @@ public class Guest {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     private void setGuestID() {
