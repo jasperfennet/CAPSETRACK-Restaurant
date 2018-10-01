@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.*;
 import java.util.List;
 
 
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
 
     private Order order;
-
+    private LocalDateTime date;
 
     List<MenuItem> menuItems = new ArrayList<>();
 
@@ -31,7 +31,8 @@ class OrderTest {
         menuItem.addIngredient(ingredient1);
         menuItems.add(menuItem);
 
-        order = new Order(5, menuItems, 48, "Ontvangen", new Date());
+        date = LocalDateTime.of(2018, 10, 20, 19, 30);
+        order = new Order(5, menuItems, 48, "Ontvangen", date);
     }
 
 
@@ -89,9 +90,9 @@ class OrderTest {
     @Test
     void getDate() {
 
-        Date date = new Date();
-        order.setTime(date);
-        assertEquals(order.getTime(), date);
+        LocalDateTime newDate = LocalDateTime.of(2018, 10 ,10, 17, 0);
+        order.setTime(newDate);
+        assertEquals(order.getTime(), newDate);
     }
 
 }
