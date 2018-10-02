@@ -1,5 +1,6 @@
 package com.capgemini.restaurant.authentication;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,10 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity auth) throws Exception{
         auth.authenticationProvider(authenticationProvider());
         auth.userDetailsService(userDetailsService());
-        auth.
-                authorizeRequests()
+        auth
+                .authorizeRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/*").permitAll()
+                .antMatchers("/scripts/**").permitAll()
+                .antMatchers("/styles/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin();
