@@ -5,7 +5,7 @@ import com.capgemini.restaurant.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/guest")
@@ -15,30 +15,31 @@ public class GuestController {
     private GuestRepository guestRepository;
 
     @GetMapping("/list")
-    public Collection<Guest> list() {
+    public Iterable<Guest> list() {
         return guestRepository.findAll();
     }
 
-    @GetMapping("/get/{guestNR}")
-    public Guest findByGuestNR(@PathVariable int guestNR) {
-        return guestRepository.findByGuestNR(guestNR);
+    @GetMapping("/get/{id}")
+    public Guest findByGuestNR(@PathVariable int id) {
+        return guestRepository.findById(id).get();
     }
-
 
     @PostMapping("/post")
     public Guest addGuest(@RequestBody Guest newGuest) {
-        this.guestRepository.save(newGuest);
-        return newGuest;
+       return guestRepository.save(newGuest);
     }
 
-    @DeleteMapping("/delete/{guestNR}")
-    public void deleteByGuestNR(@PathVariable int guestNR){
-        this.guestRepository.deleteByGuestNR(guestNR);
+    @DeleteMapping("/delete/{id}")
+    public void deleteByGuestNR(@PathVariable int id){ guestRepository.deleteById(id);
     }
 
-    @PutMapping("update/{guestNR}")
-    public Guest updateByGuestNR(@PathVariable int guestNR, @RequestBody Guest update){
-        return this.guestRepository.updateGuest(guestNR, update);
+    @PutMapping("update/{id}")
+    public Guest updateByGuestNR(@PathVariable int id, @RequestBody Guest update){
+        Optional<Guest> currentGuest = guestRepository.findById(id);
+        if(!currentGuest.isPresent()) {
+            throw new RuntimeException();
+        }
+        return guestRepository.save(update);
     }
 }
 

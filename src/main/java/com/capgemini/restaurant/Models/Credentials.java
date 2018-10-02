@@ -1,10 +1,20 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Credentials {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String userName;
     private String password;
+
+    public Credentials(){}
 
     public int getId() {
         return id;

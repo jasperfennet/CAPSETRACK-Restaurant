@@ -5,7 +5,7 @@ import com.capgemini.restaurant.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -15,33 +15,31 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @GetMapping("/list")
-    public Collection<Employee> list() {
+    public Iterable<Employee> list() {
         return employeeRepository.findAll();
     }
 
-    @GetMapping("/get/{employeeNR}")
-    public Employee findByEmployeeNR(@PathVariable int employeeNR) {
-        return employeeRepository.findByEmployeeNR(employeeNR);
-    }
-    @GetMapping("/get/{employeeName}")
-    public Employee findByEmployeeName(@PathVariable String employeeName){
-        return employeeRepository.findByEmployeeName(employeeName);
+    @GetMapping("/get/{id}")
+    public Employee findByEmployeeNR(@PathVariable int id) {
+        return employeeRepository.findById(id).get();
     }
 
     @PostMapping("/post")
     public Employee addEmployee(@RequestBody Employee newEmployee) {
-        this.employeeRepository.save(newEmployee);
-        return newEmployee;
+       return employeeRepository.save(newEmployee);
     }
 
-    @DeleteMapping("/delete/{employeeNR}")
-    public void deleteByEmployeeNR(@PathVariable int employeeNR){
-        this.employeeRepository.deleteByEmployeeNR(employeeNR);
+    @DeleteMapping("/delete/{id}")
+    public void deleteByEmployeeNR(@PathVariable int id){ employeeRepository.deleteById(id);
     }
 
-    @PutMapping("update/{employeeNR}")
-    public Employee updateByEmployeeNR(@PathVariable int employeeNR, @RequestBody Employee update){
-        return this.employeeRepository.updateEmployee(employeeNR, update);
+    @PutMapping("update/{id}")
+    public Employee updateByEmployeeNR(@PathVariable int id, @RequestBody Employee update){
+        Optional<Employee> currentEmployee = employeeRepository.findById(id);
+        if(!currentEmployee.isPresent()) {
+            throw new RuntimeException();
+        }
+        return employeeRepository.save(update);
     }
 }
 

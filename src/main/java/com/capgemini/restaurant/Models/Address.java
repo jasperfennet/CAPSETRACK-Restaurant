@@ -1,13 +1,23 @@
 package com.capgemini.restaurant.Models;
 
-public class Address {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String streetname;
     private int houseNR;
     private String addition;
     private String zipcode;
     private String city;
     private String country;
+
+    public Address(){}
 
     public Address(
             String streetname,
@@ -22,6 +32,14 @@ public class Address {
         this.zipcode = zipcode;
         this.city = city;
         this.country = country;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStreetname() {

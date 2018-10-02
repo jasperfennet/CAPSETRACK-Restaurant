@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.capgemini.restaurant.RestaurantApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.807 s <<< FAILURE! - in com.capgemini.restaurant.RestaurantApplicationTests
+contextLoads(com.capgemini.restaurant.RestaurantApplicationTests)  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: com.capgemini.restaurant.Models.Address, at table: guest, for columns: [org.hibernate.mapping.Column(address)]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: com.capgemini.restaurant.Models.Address, at table: guest, for columns: [org.hibernate.mapping.Column(address)]
+Caused by: org.hibernate.MappingException: Could not determine type for: com.capgemini.restaurant.Models.Address, at table: guest, for columns: [org.hibernate.mapping.Column(address)]
+

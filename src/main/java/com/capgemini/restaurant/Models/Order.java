@@ -1,16 +1,23 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int orderId;
     private List<MenuItem> menuItems;
     private int tableNumber;
     private String orderStatus;
     private Date time;
 
-    public Order(){};
+    public Order(){}
 
     public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, Date time) {
         this.orderId = orderId;

@@ -1,8 +1,15 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Guest {
-    public static int currentID = 0;
-    private int guestID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -12,7 +19,6 @@ public class Guest {
     public Guest(){}
 
     public Guest(String firstName, String lastName, String emailAddress, Address address) {
-        setGuestID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -59,13 +65,12 @@ public class Guest {
         this.password = password;
     }
 
-    private void setGuestID() {
-        this.guestID = Guest.currentID + 1;
-        Guest.currentID = this.guestID;
+    public int getId() {
+        return id;
     }
 
-    public int getGuestID() {
-        return guestID;
+    public void setId(int id) {
+        this.id = id;
     }
 
 

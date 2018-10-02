@@ -1,13 +1,19 @@
 package com.capgemini.restaurant.Models;
 
-import com.capgemini.restaurant.Models.Table;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Booking {
 
     private Guest guest;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private Date date;
     private int amountOfPersons;

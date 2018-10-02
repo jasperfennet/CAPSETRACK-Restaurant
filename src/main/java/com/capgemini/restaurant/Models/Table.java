@@ -1,8 +1,17 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Table {
 
-    private int number, capacity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int number;
+    private int capacity;
 
     public Table() {}
 

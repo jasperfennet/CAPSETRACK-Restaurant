@@ -5,45 +5,41 @@ import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.Optional;
 
 @RestController
-
-@RequestMapping("/api/tables")
+@RequestMapping("/api/table")
 public class TableController {
 
     @Autowired
     private TableRepository tableRepository;
 
-    @CrossOrigin
     @GetMapping("/list")
-    public Collection<Table> list() {
+    public Iterable<Table> list() {
         return tableRepository.findAll();
     }
 
-    @CrossOrigin
-    @GetMapping("/get/{tableNR}")
-    public Table findByTableNR(@PathVariable int tableNR) {
-        return tableRepository.findByTableNR(tableNR);
+    @GetMapping("/get/{id}")
+    public Table findByTableNR(@PathVariable int id) {
+        return tableRepository.findById(id).get();
     }
 
-    @CrossOrigin
     @PostMapping("/post")
     public Table addTable(@RequestBody Table newTable) {
-        this.tableRepository.save(newTable);
-        return newTable;
+       return tableRepository.save(newTable);
     }
 
-    @CrossOrigin
-    @DeleteMapping("/delete/{tableNR}")
-    public void deleteByTableNR(@PathVariable int tableNR) {
-        this.tableRepository.deleteByTableNR(tableNR);
+    @DeleteMapping("/delete/{id}")
+    public void deleteByTableNR(@PathVariable int id){ tableRepository.deleteById(id);
     }
 
-    @CrossOrigin
-    @PutMapping("update/{tableNR}")
-    public Table updateByTableNR(@PathVariable int tableNR, @RequestBody Table update) {
-        return this.tableRepository.updateTable(tableNR, update);
+    @PutMapping("update/{id}")
+    public Table updateByTableNR(@PathVariable int id, @RequestBody Table update){
+        Optional<Table> currentTable = tableRepository.findById(id);
+        if(!currentTable.isPresent()) {
+            throw new RuntimeException();
+        }
+        return tableRepository.save(update);
     }
 }
 

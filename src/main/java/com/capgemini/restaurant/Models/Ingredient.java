@@ -1,7 +1,16 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ingredient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String name;
     private String unit;
     private int amount;
@@ -9,6 +18,7 @@ public class Ingredient {
     private Supplier supplier;
     private String allergy;
 
+    public Ingredient(){}
     public Ingredient(
             String name, String unit, int amount, double price, Supplier supplier, String allergy) {
         this.name = name;
@@ -17,6 +27,14 @@ public class Ingredient {
         this.price = price;
         this.supplier = supplier;
         this.allergy = allergy;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

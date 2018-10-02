@@ -17,8 +17,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
     //zowel guest als employee gemaakt worden
     @Override
     public User loadUserByUsername(String username) {
-        Employee employee = employeeRepository.findByEmployeeName(username);
-        return mapPersonToUser(employee);
+        for(Employee employee : employeeRepository.findAll()){
+            if(employee.getUserName().equals(username)){
+                return mapPersonToUser(employee);
+            }
+        }
+        return null;
     }
 //    Arrays.asList(new SimpleGrantedAuthority()) voegt rollen toe.
 

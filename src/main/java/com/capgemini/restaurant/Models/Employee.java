@@ -1,14 +1,23 @@
 package com.capgemini.restaurant.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Employee extends Credentials {
 
     private String firstName;
     private String lastName;
     private String role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String userName;
     private String password;
 
+    public Employee(){}
     public Employee(String firstName, String lastName, String role) {
         super();
         this.firstName = firstName;
