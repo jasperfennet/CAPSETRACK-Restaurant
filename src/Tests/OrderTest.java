@@ -15,6 +15,8 @@ class OrderTest {
 
     private Order order;
     private LocalDateTime date;
+    private Supplier supplier;
+    private Address address;
 
     List<MenuItem> menuItems = new ArrayList<>();
 
@@ -22,9 +24,9 @@ class OrderTest {
     @BeforeEach
     void setUp() {
 
-        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands");
+        address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands");
 
-        Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
+        supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
         Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
 
         MenuItem menuItem = new MenuItem("Menu1", "long description of menu",  new ArrayList<Ingredient>());
@@ -50,15 +52,33 @@ class OrderTest {
     }
 
     @Test
+    void getMenuItems() {
+        assertNotNull(order.getMenuItems());
+    }
+
+    @Test
     void setMenuItems() {
         order.setMenuItems(menuItems);
         assertNotNull(order.getMenuItems(), "kaas");
     }
 
+    @Test
+    void addMenuItem() {
+        MenuItem newMenuItem = new MenuItem("to add", "long description of menu",  new ArrayList<Ingredient>());
+        int currentSize = order.getMenuItems().size();
+        order.addMenuItem(newMenuItem);
+        assertEquals(currentSize+1, order.getMenuItems().size());
+
+    }
 
     @Test
-    void getMenuItems() {
-        assertNotNull(order.getMenuItems());
+    void removeMenuItem() {
+        MenuItem newMenuItem = new MenuItem("to add", "long description of menu",  new ArrayList<Ingredient>());
+        int currentSize = order.getMenuItems().size();
+        order.addMenuItem(newMenuItem);
+        assertEquals(currentSize+1, order.getMenuItems().size());
+        order.removeMenuItem(newMenuItem);
+        assertEquals(currentSize, order.getMenuItems().size());
     }
 
     @Test
@@ -71,7 +91,6 @@ class OrderTest {
         order.setTableNumber(5);
         assertEquals(order.getTableNumber(), 5);
         assertNotEquals(order.getOrderId(), 4);
-
     }
 
     @Test
@@ -83,13 +102,10 @@ class OrderTest {
     void setOrderStatus() {
         order.setOrderStatus("OrderStatus");
         assertEquals("OrderStatus", order.getOrderStatus());
-
-
     }
 
     @Test
     void getDate() {
-
         LocalDateTime newDate = LocalDateTime.of(2018, 10 ,10, 17, 0);
         order.setTime(newDate);
         assertEquals(order.getTime(), newDate);
