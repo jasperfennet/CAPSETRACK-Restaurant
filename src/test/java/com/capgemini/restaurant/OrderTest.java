@@ -1,13 +1,12 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.*;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.time.*;
 import java.util.List;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +26,7 @@ class OrderTest {
         Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
         Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
 
-        MenuItem menuItem = new MenuItem("Menu1", "long description of menu",  new ArrayList<Ingredient>());
+        MenuItem menuItem = new MenuItem(1, "Menu1", "long description of menu",  new ArrayList<Ingredient>());
         menuItem.addIngredient(ingredient1);
         menuItems.add(menuItem);
 

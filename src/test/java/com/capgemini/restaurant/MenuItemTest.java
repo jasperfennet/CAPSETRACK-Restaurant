@@ -1,13 +1,13 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.Address;
-import Models.Ingredient;
-import Models.MenuItem;
-import Models.Supplier;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class MenuItemTest {
 
@@ -25,7 +25,7 @@ class MenuItemTest {
         ingredients.add(ingr1);
         ingredients.add(ingr2);
 
-        menuItem = new MenuItem("Menu", "Description", ingredients);
+        menuItem = new MenuItem(1, "Menu", "Description", ingredients);
     }
 
     @Test

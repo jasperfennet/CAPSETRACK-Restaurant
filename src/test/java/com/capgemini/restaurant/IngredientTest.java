@@ -1,12 +1,10 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.Address;
-import Models.Ingredient;
-import Models.Supplier;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IngredientTest {
   private Ingredient ingredient;

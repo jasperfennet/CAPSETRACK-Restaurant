@@ -1,11 +1,7 @@
 package com.capgemini.restaurant.Models;
 
-<<<<<<< HEAD:src/Models/Order.java
 import java.time.*;
-=======
 import javax.persistence.*;
-import java.util.Date;
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/Order.java
 import java.util.List;
 
 @Entity
@@ -19,13 +15,9 @@ public class Order {
     private String orderStatus;
     private LocalDateTime time;
 
-<<<<<<< HEAD:src/Models/Order.java
-    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, LocalDateTime time) {
-=======
     public Order(){}
 
-    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, Date time) {
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/Order.java
+    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, LocalDateTime time) {
         this.orderId = orderId;
         this.menuItems = menuItems;
         this.tableNumber = tableNumber;

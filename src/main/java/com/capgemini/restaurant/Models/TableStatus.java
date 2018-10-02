@@ -1,4 +1,4 @@
-package Models;
+package com.capgemini.restaurant.Models;
 
 public enum TableStatus {
     AVAILABLE,

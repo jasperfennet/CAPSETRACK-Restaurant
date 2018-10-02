@@ -1,16 +1,10 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.Table;
-import Models.TableStatus;
-import Models.TableType;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TableTest {
 

@@ -1,11 +1,11 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.*;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.time.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +40,7 @@ class BookingTest {
 
         date = LocalDateTime.of(2018, 10, 22, 19, 30);
 
-        menuItem = new MenuItem("Menu 1", "long description of menu", new ArrayList<Ingredient>());
+        menuItem = new MenuItem(1, "Menu 1", "long description of menu", new ArrayList<Ingredient>());
         menuItem.addIngredient(ingredient1);
 
         booking =

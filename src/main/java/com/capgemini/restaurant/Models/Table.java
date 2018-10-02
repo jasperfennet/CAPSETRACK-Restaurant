@@ -1,12 +1,6 @@
 package com.capgemini.restaurant.Models;
 
-<<<<<<< HEAD:src/Models/Table.java
-public class Table {
 
-    private int number, capacity;
-    private TableStatus status;
-    private TableType type;
-=======
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +13,11 @@ public class Table {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int number;
     private int capacity;
+    private TableStatus status;
+    private TableType type;
 
     public Table() {}
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/Table.java
 
-
-    //todo:
-    //add tabletype. get capacity from the tabletype.
     public Table(int number,TableType type) {
         this.number = number;
         this.capacity = type.getTableCapacity();
