@@ -1,19 +1,17 @@
 package com.capgemini.restaurant.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class MenuItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String menuDescription;
+    @ManyToMany
     private List<Ingredient> ingredients;
 
     public MenuItem(){}

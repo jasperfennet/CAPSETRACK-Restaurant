@@ -1,20 +1,18 @@
 package com.capgemini.restaurant.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Ingredient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String unit;
     private int amount;
     private double price;
+    @ManyToOne
     private Supplier supplier;
     private String allergy;
 

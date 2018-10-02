@@ -12,7 +12,7 @@ public class Employee extends Credentials {
     private String lastName;
     private String role;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String userName;
     private String password;

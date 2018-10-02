@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Table {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int number;
     private int capacity;
 
