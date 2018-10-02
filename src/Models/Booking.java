@@ -1,19 +1,21 @@
 package Models;
 
 import java.util.Date;
+import java.time.*;
 import java.util.List;
 
 public class Booking {
 
     private Guest guest;
     private int id;
-    private Date date;
+    //private Date date;
+    private LocalDateTime date;
     private int amountOfPersons;
     private List<Extra> extras;
     private List<Order> orders;
     private List<Table> table;
 
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
+    public Booking(Guest guest, int id, LocalDateTime date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
         this.date = date;
@@ -39,11 +41,11 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

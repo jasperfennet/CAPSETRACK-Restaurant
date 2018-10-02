@@ -1,7 +1,7 @@
 package MockData;
 import Models.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.*;
 import java.util.Random;
 
 public class InitializeData {
@@ -12,6 +12,7 @@ public class InitializeData {
     private ArrayList<MenuItem> menuItems = new ArrayList<>();
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<Extra> extras = new ArrayList<>();
+    private LocalDateTime dateTime = LocalDateTime.of(2018, 10, 20, 20, 0);
     public InitializeData() {
         for (int i = 0; i < 100; i++) {
             Address address = new Address(
@@ -45,8 +46,8 @@ public class InitializeData {
                     ""+ i + "" + (i+1) + "" + (i+2));
             ingredients.add(new Ingredient(""+('a' + i),"gram", i,i, supplier, "" + ('c' + i)));
             menuItems.add(new MenuItem("abcdefg", "hijklmnopqrstuvwxyz", ingredients));
-            orders.add(new Order(i,menuItems,i,"in progress", new Date()));
-            bookings.add(new Booking(guests.get(i),i,new Date(),new Random().nextInt(6),tempExtras, orders, tables));
+            orders.add(new Order(i,menuItems,i,"in progress", dateTime));
+            bookings.add(new Booking(guests.get(i),i,dateTime,new Random().nextInt(6),tempExtras, orders, tables));
         }
     }
     public ArrayList<Guest> getGuests() {

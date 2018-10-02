@@ -1,6 +1,6 @@
 package Models;
 
-import java.util.Date;
+import java.time.*;
 import java.util.List;
 
 public class Order {
@@ -8,9 +8,9 @@ public class Order {
     private List<MenuItem> menuItems;
     private int tableNumber;
     private String orderStatus;
-    private Date time;
+    private LocalDateTime time;
 
-    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, Date time) {
+    public Order(int orderId, List<MenuItem> menuItems, int tableNumber, String orderStatus, LocalDateTime time) {
         this.orderId = orderId;
         this.menuItems = menuItems;
         this.tableNumber = tableNumber;
@@ -59,11 +59,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 }

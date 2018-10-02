@@ -65,6 +65,11 @@ public class GuestTest {
 
     @Test
     void getGuestID() {
-        assertEquals(15, guest1.getGuestID());
+        Guest newGuest1 = new Guest("a", "b", "c", address);
+        Guest newGuest2 = new Guest("d", "e", "f", address);
+        int newGuest1ID = newGuest1.getGuestID();
+        int newGuest2ID = newGuest2.getGuestID();
+
+        assertEquals(newGuest1ID+1, newGuest2ID);
     }
 }
