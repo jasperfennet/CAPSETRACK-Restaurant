@@ -14,3 +14,4 @@
 
 # Out folder
 out/
+*.class
