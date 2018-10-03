@@ -12,7 +12,7 @@ public class Ingredient {
     private String unit;
     private int amount;
     private double price;
-    @ManyToOne
+    @ManyToMany
     private Supplier supplier;
     @ManyToMany
     private Allergy allergy;
