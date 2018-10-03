@@ -1,6 +1,7 @@
 package com.capgemini.restaurant.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Ingredient {
@@ -13,19 +14,19 @@ public class Ingredient {
     private int amount;
     private double price;
     @ManyToMany
-    private Supplier supplier;
+    private List<Supplier> suppliers;
     @ManyToMany
-    private Allergy allergy;
+    private List<Allergy> allergies;
 
     public Ingredient(){}
     public Ingredient(
-            String name, String unit, int amount, double price, Supplier supplier, Allergy allergy) {
+            String name, String unit, int amount, double price, List<Supplier> suppliers, List<Allergy> allergies) {
         this.name = name;
         this.unit = unit;
         this.amount = amount;
         this.price = price;
-        this.supplier = supplier;
-        this.allergy = allergy;
+        this.suppliers = suppliers;
+        this.allergies = allergies;
     }
 
     public int getId() {
@@ -68,19 +69,19 @@ public class Ingredient {
         this.price = price;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public List<Supplier> getSuppliers() {
+        return suppliers;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
     }
 
-    public Allergy getAllergy() {
-        return allergy;
+    public List<Allergy> getAllergies() {
+        return allergies;
     }
 
-    public void setAllergy(Allergy allergy) {
-        this.allergy = allergy;
+    public void setAllergies(List<Allergy> allergies) {
+        this.allergies = allergies;
     }
 }
