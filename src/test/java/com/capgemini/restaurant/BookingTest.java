@@ -23,24 +23,27 @@ class BookingTest {
 
     @BeforeEach
     void setUp() {
-        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands");
-
-        Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
-        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
+        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "NH" , "Netherlands");
+        Supplier supplier = new Supplier("CheeseTown", address, "+54", "12345678", "mail.address@example.com", "CH12BANK345678910");
+        Allergy lactose = new Allergy("Lactose");
+        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, lactose);
 
         tableList = new ArrayList<>();
         table = new Table(4, TableType.SQUARE);
         tableList.add(table);
 
         guest = new Guest("Henk", "Smit", "henk.smit@email.com",
-                new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands"));
+                new Address("A Street", 123, "a", "1234AB",
+                        "Amsterdam", "NH", "Netherlands"), "+31",
+                "12345678", true);
 
         bookingId = 1;
         amountOfPersons = 4;
 
         date = LocalDateTime.of(2018, 10, 22, 19, 30);
 
-        menuItem = new MenuItem(1, "Menu 1", "long description of menu", new ArrayList<Ingredient>());
+        menuItem = new MenuItem(1, "Menu 1", "long description of menu", new ArrayList<Ingredient>(),
+                10.00, "link");
         menuItem.addIngredient(ingredient1);
 
         booking =
@@ -64,7 +67,9 @@ class BookingTest {
     void setGuest() {
         Guest newGuest;
         newGuest = new Guest("Anja", "de Vries", "anja.de.vries@email.com",
-                new Address("B Lane", 42, "b", "5678XY", "Utrecht", "Netherlands"));
+                new Address("B Lane", 42, "b", "5678XY",
+                        "Utrecht", "UT", "Netherlands"), "+31",
+                "12345678", true);
         booking.setGuest(newGuest);
         assertEquals(newGuest, booking.getGuest());
         assertNotEquals(guest, newGuest);
