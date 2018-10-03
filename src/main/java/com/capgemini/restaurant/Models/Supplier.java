@@ -55,7 +55,7 @@ public class Supplier {
     }
 
     public void setPhoneCountryCode(String phoneNR) {
-        this.phoneNR = phoneCountryCode;
+        this.phoneCountryCode = phoneCountryCode;
     }
 
     public String getPhoneNumber() {
