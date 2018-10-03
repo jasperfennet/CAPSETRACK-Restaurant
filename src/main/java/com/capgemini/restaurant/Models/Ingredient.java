@@ -14,11 +14,12 @@ public class Ingredient {
     private double price;
     @ManyToOne
     private Supplier supplier;
-    private String allergy;
+    @ManyToMany
+    private Allergy allergy;
 
     public Ingredient(){}
     public Ingredient(
-            String name, String unit, int amount, double price, Supplier supplier, String allergy) {
+            String name, String unit, int amount, double price, Supplier supplier, Allergy allergy) {
         this.name = name;
         this.unit = unit;
         this.amount = amount;
@@ -75,11 +76,11 @@ public class Ingredient {
         this.supplier = supplier;
     }
 
-    public String getAllergy() {
+    public Allergy getAllergy() {
         return allergy;
     }
 
-    public void setAllergy(String allergy) {
+    public void setAllergy(Allergy allergy) {
         this.allergy = allergy;
     }
 }
