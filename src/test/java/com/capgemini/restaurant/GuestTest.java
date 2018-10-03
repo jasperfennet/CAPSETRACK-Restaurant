@@ -12,9 +12,8 @@ public class GuestTest {
 
     @BeforeEach
     void setUp() {
-        address = new Address("A Street", 123, "", "1234AB", "Amsterdam", "Netherlands");
-        guest1 = new Guest("Pietje3", "Puk3", "pietje3.puk3@test.com",
-                address);
+        address = new Address("A Street", 123, "", "1234AB", "Amsterdam", "NH", "Netherlands");
+        guest1 = new Guest("Pietje3", "Puk3", "pietje3.puk3@test.com", address, "+31", "12345678", true);
     }
 
     @Test
@@ -57,15 +56,15 @@ public class GuestTest {
 
     @Test
     void setAddress() {
-        Address newAdress = new Address("Another Street", 345, "a", "4567AB", "Utrecht", "Amsterdam");
+        Address newAdress = new Address("Another Street", 345, "a", "4567AB", "Utrecht", "UT", "Amsterdam");
         guest1.setAddress(newAdress);
         assertEquals(newAdress, guest1.getAddress());
     }
 
     @Test
     void getGuestID() {
-        Guest newGuest1 = new Guest("a", "b", "c", address);
-        Guest newGuest2 = new Guest("d", "e", "f", address);
+        Guest newGuest1 = new Guest("a", "b", "c", address, "+31", "12345678", false);
+        Guest newGuest2 = new Guest("d", "e", "f", address, "+31", "87654321", true);
         int newGuest1ID = newGuest1.getId();
         int newGuest2ID = newGuest2.getId();
 
