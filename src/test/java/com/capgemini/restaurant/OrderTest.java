@@ -21,12 +21,13 @@ class OrderTest {
     @BeforeEach
     void setUp() {
 
-        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "Netherlands");
+        Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "NH", "Netherlands");
 
-        Supplier supplier = new Supplier("CheeseTown", address, "+5412345678", "CH12BANK345678910");
-        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, "Lactose");
+        Supplier supplier = new Supplier("CheeseTown", address, "+54", "12345678", "CH12BANK345678910", "mail.address@example.com");
+        Allergy lactose = new Allergy("Lactose");
+        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, lactose);
 
-        MenuItem menuItem = new MenuItem(1, "Menu1", "long description of menu",  new ArrayList<Ingredient>());
+        MenuItem menuItem = new MenuItem(1, "Menu1", "long description of menu",  new ArrayList<Ingredient>(), 10.00, "image link");
         menuItem.addIngredient(ingredient1);
         menuItems.add(menuItem);
 
