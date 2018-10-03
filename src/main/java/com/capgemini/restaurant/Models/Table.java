@@ -11,6 +11,7 @@ public class Table {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int number;
     private int capacity;
     private TableStatus status;
@@ -23,6 +24,18 @@ public class Table {
         this.capacity = type.getTableCapacity();
         this.status = TableStatus.AVAILABLE;
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public int getNumber() {
