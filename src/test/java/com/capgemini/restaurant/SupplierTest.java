@@ -71,4 +71,15 @@ public class SupplierTest {
     supplier.setBillingNr("CH12BANK1234567810");
     assertEquals("CH12BANK1234567810", supplier.getBillingNr());
   }
+
+  @Test
+  public void getEmailAddress() {
+    assertEquals("mail@example.com", supplier.getEmailAddress());
+  }
+
+  @Test
+  public void setEmailAddress() {
+    supplier.setEmailAddress("newmail@example.com");
+    assertEquals("newmail@example.com", supplier.getEmailAddress());
+  }
 }
