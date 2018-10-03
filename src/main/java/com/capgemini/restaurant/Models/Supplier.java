@@ -10,15 +10,20 @@ public class Supplier {
     private String name;
     @ManyToOne
     private Address address;
-    private String phoneNR;
+    private String phoneCountryCode;
+    private String phoneNumber;
     private String billingNr;
+    private String emailAddress;
 
     public Supplier(){}
-    public Supplier(String name, Address address, String phoneNR, String billingNr) {
+    public Supplier(String name, Address address, String phoneCountryCode, String phoneNumber,
+                    String billingNr, String emailAddress) {
         this.name = name;
         this.address = address;
-        this.phoneNR = phoneNR;
+        this.phoneCountryCode = phoneCountryCode;
+        this.phoneNumber = phoneNumber;
         this.billingNr = billingNr;
+        this.emailAddress = emailAddress;
     }
 
     public int getId() {
@@ -45,12 +50,20 @@ public class Supplier {
         this.address = address;
     }
 
-    public String getPhoneNR() {
-        return phoneNR;
+    public String getPhoneCountryCode() {
+        return phoneCountryCode;
     }
 
-    public void setPhoneNR(String phoneNR) {
-        this.phoneNR = phoneNR;
+    public void setPhoneCountryCode(String phoneNR) {
+        this.phoneNR = phoneCountryCode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getBillingNr() {
@@ -59,5 +72,13 @@ public class Supplier {
 
     public void setBillingNr(String billingNr) {
         this.billingNr = billingNr;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }
