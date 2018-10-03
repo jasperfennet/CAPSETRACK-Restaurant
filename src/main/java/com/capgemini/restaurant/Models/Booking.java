@@ -9,18 +9,13 @@ import java.util.List;
 @Entity
 public class Booking {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-<<<<<<< HEAD:src/Models/Booking.java
-    //private Date date;
     private LocalDateTime date;
-=======
-    private Date date;
+
     @ManyToOne
     private Guest guest;
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/Booking.java
     private int amountOfPersons;
     @ManyToMany
     private List<Extra> extras;
@@ -29,13 +24,8 @@ public class Booking {
     @ManyToMany
     private List<Table> table;
 
-<<<<<<< HEAD:src/Models/Booking.java
-    public Booking(Guest guest, int id, LocalDateTime date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
-=======
     public Booking(){}
-
-    public Booking(Guest guest, int id, Date date, int amountOfPersons, List<Extra> extras, List<Order> orders) {
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/Booking.java
+    public Booking(Guest guest, int id, LocalDateTime date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
         this.date = date;
@@ -98,5 +88,12 @@ public class Booking {
 
     public void removeOrder(Order order) {
         orders.remove(order);
+    }
+
+    public List<Table> getTable() {
+        return table;
+    }
+    public void setTable(List<Table> table) {
+        this.table = table;
     }
 }

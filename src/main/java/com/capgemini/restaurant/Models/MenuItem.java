@@ -6,25 +6,18 @@ import java.util.List;
 @Entity
 public class MenuItem {
 
-<<<<<<< HEAD:src/Models/MenuItem.java
-=======
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/MenuItem.java
     private String name;
     private String menuDescription;
     @ManyToMany
     private List<Ingredient> ingredients;
 
-<<<<<<< HEAD:src/Models/MenuItem.java
-    public MenuItem(String name, String menuDescription, List<Ingredient> ingredients) {
-=======
     public MenuItem(){}
 
     public MenuItem(int id, String name, String menuDescription, List<Ingredient> ingredients) {
         this.id = id;
->>>>>>> spring_bootsetup:src/main/java/com/capgemini/restaurant/Models/MenuItem.java
         this.name = name;
         this.menuDescription = menuDescription;
         this.ingredients = ingredients;
@@ -68,13 +61,5 @@ public class MenuItem {
 
     public void removeIngredient(Ingredient ingredient) {
         this.ingredients.remove(ingredient);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

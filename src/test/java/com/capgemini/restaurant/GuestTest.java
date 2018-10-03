@@ -1,11 +1,10 @@
-package Tests;
+package com.capgemini.restaurant;
 
-import Models.Address;
-import Models.Guest;
+import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GuestTest {
     private Guest guest1;
@@ -67,8 +66,8 @@ public class GuestTest {
     void getGuestID() {
         Guest newGuest1 = new Guest("a", "b", "c", address);
         Guest newGuest2 = new Guest("d", "e", "f", address);
-        int newGuest1ID = newGuest1.getGuestID();
-        int newGuest2ID = newGuest2.getGuestID();
+        int newGuest1ID = newGuest1.getId();
+        int newGuest2ID = newGuest2.getId();
 
         assertEquals(newGuest1ID+1, newGuest2ID);
     }
