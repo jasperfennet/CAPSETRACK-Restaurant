@@ -12,8 +12,7 @@ public class Allergy {
     private int id;
     private String name;
 
-    public Allergy(int id, String name) {
-        this.id = id;
+    public Allergy(String name) {
         this.name = name;
     }
 
