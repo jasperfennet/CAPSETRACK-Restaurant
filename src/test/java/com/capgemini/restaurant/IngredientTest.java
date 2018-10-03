@@ -15,10 +15,10 @@ public class IngredientTest {
     supplier =
         new Supplier(
             "Meat Delivery",
-            new Address("Streetname", 123, "", "541000", "Wuhan", "China"),
-            "0612354678",
-            "NL12BANK1234567810");
-    ingredient = new Ingredient("Strawberry's", "Kilo", 10, 20.00, supplier, "Strawberry Fever");
+            new Address("Streetname", 123, "", "541000", "Wuhan", "11", "China"),
+            "+54", "0612354678","NL12BANK1234567810", "mail@example.com");
+    Allergy strawberryFever = new Allergy("Strawberry Fever");
+    ingredient = new Ingredient("Strawberry's", "Kilo", 10, 20.00, supplier, strawberryFever);
   }
 
   @Test
@@ -75,9 +75,8 @@ public class IngredientTest {
     Supplier supplier2 =
         new Supplier(
             "Meat Delivery",
-            new Address("Streetname", 123, "", "541000", "Wuhan", "China"),
-            "0612354678",
-            "NL12BANK1234567810");
+            new Address("Streetname", 123, "", "541000", "Wuhan", "11", "China"),
+            "+54", "0612354678", "NL12BANK1234567810", "mail@example.com");
 
     ingredient.setSupplier(supplier2);
     assertEquals(supplier2, ingredient.getSupplier());
@@ -90,7 +89,8 @@ public class IngredientTest {
 
   @Test
   public void setAllergy() {
-    ingredient.setAllergy("Blue Strawberry's Fever");
-    assertEquals("Blue Strawberry's Fever", ingredient.getAllergy());
+    Allergy blueStrawberryFever = new Allergy("Blue Strawberry Fever");
+    ingredient.setAllergy(blueStrawberryFever);
+    assertEquals(blueStrawberryFever, ingredient.getAllergy());
   }
 }
