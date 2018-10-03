@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/metisMenu.min.css" rel="stylesheet">
+    <link href="styles/sb-admin-2.css" rel="stylesheet">
+    <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Extras</title>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="navigation"></div>
+
+    <div id="page-wrapper">
+        <h1>Extra List</h1>
+
+        <div class="container">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <table id="myTable">
+                    <thead>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Manage</th>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-3">
+            </div>
+              -
+        </div>
+
+
+        <div>
+            <button type="button" data-toggle="modal" data-target="#newExtraModal">Add Extra</button>
+        </div>
+
+
+        <div id="newExtraModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Extra</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form data-toggle="validator" role="form" id="newExtraForm" onsubmit="return false;">
+                            <div class="form-group">
+                                <label for="inputExtraName" class="control-label">Insert Name of the Extra</label>
+                                <input type="text" id="inputExtraName" data-error="Please fill in a name." required />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCost" class="control-label">Select the cost</label>
+                                <input type="number" value="10.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency" id="inputCost" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/metisMenu.min.js"></script>
+<script src="scripts/sb-admin-2.js"></script>
+<script src="scripts/extraCRUD.js"></script>
+<script src="scripts/navigation.js"></script>
+
+</body>
+</html>

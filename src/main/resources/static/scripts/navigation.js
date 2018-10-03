@@ -38,6 +38,7 @@ document.querySelector('#navigation').innerHTML =
                <li><a href="menus.html"><i class="fa fa-dashboard fa-fw"></i>Menus</a></li>
                <li><a href="ingredients.html"><i class="fa fa-dashboard fa-fw"></i>Ingredients</a></li>
                <li><a href="suppliers.html"><i class="fa fa-dashboard fa-fw"></i>Suppliers</a></li>
+               <li><a href="extras.html"><i class="fa fa-dashboard fa-fw"></i>Extras</a></li>
            </ul>
        </div>
    </div>

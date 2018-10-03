@@ -1,7 +1,7 @@
 function getData() {
     console.log("Hello world!");
     $.ajax({
-        url: "http://localhost:8080/api/tables/list",
+        url: "http://localhost:8080/api/table/list",
         type: "get",
         success: function(table) {
             // On successful get, reload the datatable with new data.
