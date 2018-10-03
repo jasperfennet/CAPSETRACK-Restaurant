@@ -14,4 +14,8 @@
 
 # Out folder
 out/
-*.class
+
+
+
+# Target folder
+target/

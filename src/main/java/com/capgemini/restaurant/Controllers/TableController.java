@@ -1,6 +1,8 @@
 package com.capgemini.restaurant.Controllers;
 
 import com.capgemini.restaurant.Models.Table;
+import com.capgemini.restaurant.Models.TableStatus;
+import com.capgemini.restaurant.Models.TableType;
 import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +23,11 @@ public class TableController {
 
     @GetMapping("/get/{id}")
     public Table findByTableNR(@PathVariable int id) {
-        return tableRepository.findById(id).get();
+        Table table = new Table();
+        table.setStatus(TableStatus.AVAILABLE);
+        table.setType(TableType.ROUND);
+        return table;
+        //return tableRepository.findById(id).get();
     }
 
     @PostMapping("/post")
