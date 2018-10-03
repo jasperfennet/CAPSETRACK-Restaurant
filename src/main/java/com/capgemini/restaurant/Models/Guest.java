@@ -1,75 +1,37 @@
 package com.capgemini.restaurant.Models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 
 @Entity
-public class Guest {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String emailAddress;
-    @ManyToOne
-    private Address address;
+public class Guest extends Person implements Credentials {
+
+    private String username;
     private String password;
 
     public Guest(){}
-
-    public Guest(String firstName, String lastName, String emailAddress, Address address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.address = address;
+    public Guest(int id, String firstName, String lastName, String emailAddress, String streetname, int houseNR, String addition, String zipcode, String city, String country, Role role, String username, String password) {
+        super(id, firstName, lastName, emailAddress, streetname, houseNR, addition, zipcode, city, country, role);
+        this.username = username;
+        this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public String getUserName() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
+    public void setUserName(String username) {
+        this.username = username;
+    }
+
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
 }

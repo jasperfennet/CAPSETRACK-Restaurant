@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityControllerExample {
 
 //    //ROLE_ prefix is verplicht
-    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_Owner")
     @RequestMapping("/admin")
     public String index(){
         return "Admin page";

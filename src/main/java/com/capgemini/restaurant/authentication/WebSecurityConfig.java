@@ -29,11 +29,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()
                 .antMatchers("/scripts/**").permitAll()
                 .antMatchers("/styles/**").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/console/**").permitAll()
                 .anyRequest().fullyAuthenticated()
+
                 .and()
                 .formLogin();
 
         auth.csrf().disable();
+        auth.headers().frameOptions().disable();
     }
     @Override
     @Bean

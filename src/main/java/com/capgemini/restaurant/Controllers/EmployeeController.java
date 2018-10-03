@@ -3,6 +3,7 @@ package com.capgemini.restaurant.Controllers;
 import com.capgemini.restaurant.Models.Employee;
 import com.capgemini.restaurant.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Secured("ROLE_Owner")
     @GetMapping("/list")
     public Iterable<Employee> list() {
         return employeeRepository.findAll();

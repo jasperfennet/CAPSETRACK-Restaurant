@@ -3,10 +3,12 @@ package com.capgemini.restaurant.Controllers;
 import com.capgemini.restaurant.Models.Guest;
 import com.capgemini.restaurant.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@Secured("ROLE_Owner")
 @RestController
 @RequestMapping("/api/guest")
 public class GuestController {

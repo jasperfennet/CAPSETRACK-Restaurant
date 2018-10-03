@@ -3,6 +3,7 @@ package com.capgemini.restaurant.Controllers;
 import com.capgemini.restaurant.Models.Table;
 import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class TableController {
     @Autowired
     private TableRepository tableRepository;
 
+    @Secured("ROLE_Guest")
     @GetMapping("/list")
     public Iterable<Table> list() {
         return tableRepository.findAll();
