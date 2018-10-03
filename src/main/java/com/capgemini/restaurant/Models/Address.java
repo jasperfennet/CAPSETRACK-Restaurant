@@ -15,6 +15,7 @@ public class Address {
     private String addition;
     private String zipcode;
     private String city;
+    private String state;
     private String country;
 
     public Address(){}
@@ -25,12 +26,14 @@ public class Address {
             String addition,
             String zipcode,
             String city,
+            String state,
             String country) {
         this.streetname = streetname;
         this.houseNR = houseNR;
         this.addition = addition;
         this.zipcode = zipcode;
         this.city = city;
+        this.state = state;
         this.country = country;
     }
 
@@ -88,5 +91,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
