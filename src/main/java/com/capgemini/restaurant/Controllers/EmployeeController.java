@@ -1,5 +1,6 @@
 package com.capgemini.restaurant.Controllers;
 
+import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Employee;
 import com.capgemini.restaurant.Models.Person;
 import com.capgemini.restaurant.Models.Role;
@@ -24,12 +25,13 @@ public class EmployeeController {
     private PasswordEncoder passwordEncoder;
 
 
-    @Secured("ROLE_Owner")
+    @Secured({"ROLE_Floormanager","ROLE_Owner"})
     @GetMapping("/list")
     public Iterable<Employee> list() {
         return employeeRepository.findAll();
     }
 
+    @Secured({"ROLE_Floormanager","ROLE_Owner"})
     @GetMapping("/get/{id}")
     public Employee findByEmployeeNR(@PathVariable int id) {
         return employeeRepository.findById(id).get();
@@ -37,14 +39,21 @@ public class EmployeeController {
 
     @PostMapping("/post")
     public Employee addEmployee(@RequestBody Employee newEmployee) {
+        for(Employee employee : list()){
+            if(employee.getUserName().equals(newEmployee.getUserName()))
+            {
+                throw new UserNotFoundException("Username already exists");
+            }
+        }
        newEmployee.setPassword(passwordEncoder.encode(newEmployee.getPassword()));
        return employeeRepository.save(newEmployee);
     }
-
+    @Secured("ROLE_Owner")
     @DeleteMapping("/delete/{id}")
     public void deleteByEmployeeNR(@PathVariable int id){ employeeRepository.deleteById(id);
     }
 
+    @Secured("ROLE_Owner")
     @PutMapping("update/{id}")
     public Employee updateByEmployeeNR(@PathVariable int id, @RequestBody Employee update){
         Optional<Employee> currentEmployee = employeeRepository.findById(id);

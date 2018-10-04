@@ -29,9 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/scripts/**").permitAll()
                 .antMatchers("/styles/**").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/console/**").permitAll()
+                .antMatchers("/h2-console/**").hasRole("Owner")
+                .antMatchers("/console/**").hasRole("Owner")
                 .antMatchers("/api/employee/post").permitAll()
+                .antMatchers("/api/guest/post").permitAll()
+                .antMatchers("/api/supplier/post").permitAll()
                 .anyRequest().fullyAuthenticated()
 
                 .and()

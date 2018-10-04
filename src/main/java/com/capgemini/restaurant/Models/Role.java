@@ -1,5 +1,5 @@
 package com.capgemini.restaurant.Models;
 
 public enum Role {
-    Kitchen, Chef, Restaurant, Owner, Guest, Other
+    Kitchen, Chef, Restaurant, Owner, Guest, Floormanager, Other
 }

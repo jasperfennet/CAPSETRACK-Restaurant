@@ -23,18 +23,13 @@ public abstract class Person {
                   String firstName,
                   String lastName,
                   String emailAddress,
-                  String streetname,
-                  int houseNR,
-                  String addition,
-                  String zipcode,
-                  String city,
-                  String country,
+                  Address address,
                   Role role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
-        this.address = new Address(streetname,houseNR,addition,zipcode,city,country);
+        this.address = address;
         this.role = role;
     }
 
