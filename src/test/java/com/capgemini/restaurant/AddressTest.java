@@ -11,7 +11,7 @@ public class AddressTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        address = new Address("Streetname", 155, "", "541000", "Wuhan", "China");
+        address = new Address("Streetname", 155, "", "541000", "Wuhan", "01","China");
     }
 
     @Test
@@ -78,5 +78,14 @@ public class AddressTest {
     void setCountry() {
         address.setCountry("Netherlands");
         assertEquals("Netherlands", address.getCountry());
+    }
+
+    @Test
+    void getState() { assertEquals("11", address.getState());}
+
+    @Test
+    void setState() {
+        address.setState("12");
+        assertEquals("12", address.getState());
     }
 }

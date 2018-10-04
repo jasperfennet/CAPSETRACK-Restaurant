@@ -11,16 +11,21 @@ public class MenuItem {
     private int id;
     private String name;
     private String menuDescription;
+    private double price;
+    private String imageLink;
     @ManyToMany
     private List<Ingredient> ingredients;
 
     public MenuItem(){}
 
-    public MenuItem(int id, String name, String menuDescription, List<Ingredient> ingredients) {
+    public MenuItem(int id, String name, String menuDescription, List<Ingredient> ingredients,
+                    double price, String imageLink) {
         this.id = id;
         this.name = name;
         this.menuDescription = menuDescription;
         this.ingredients = ingredients;
+        this.price = price;
+        this.imageLink = imageLink;
     }
 
     public int getId() {
@@ -61,5 +66,13 @@ public class MenuItem {
 
     public void removeIngredient(Ingredient ingredient) {
         this.ingredients.remove(ingredient);
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

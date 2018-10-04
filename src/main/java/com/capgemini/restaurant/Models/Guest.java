@@ -13,14 +13,21 @@ public class Guest {
     @ManyToOne
     private Address address;
     private String password;
+    private String phoneCountryCode;
+    private String phoneNumber;
+    private boolean newsLetter;
 
     public Guest(){}
 
-    public Guest(String firstName, String lastName, String emailAddress, Address address) {
+    public Guest(String firstName, String lastName, String emailAddress, Address address,
+                 String phoneCountryCode, String phoneNumber, boolean newsLetter) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.address = address;
+        this.phoneCountryCode = phoneCountryCode;
+        this.phoneNumber = phoneNumber;
+        this.newsLetter = newsLetter;
     }
 
     public String getFirstName() {
@@ -71,5 +78,27 @@ public class Guest {
         this.id = id;
     }
 
+    public String getPhoneCountryCode() {
+        return phoneCountryCode;
+    }
 
+    public void setPhoneCountryCode(String phoneCountryCode) {
+        this.phoneCountryCode = phoneCountryCode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isNewsLetter() {
+        return newsLetter;
+    }
+
+    public void setNewsLetter(boolean newsLetter) {
+        this.newsLetter = newsLetter;
+    }
 }
