@@ -20,7 +20,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private GuestRepository guestRepository;
-    
+
     //zowel guest als employee gemaakt worden
     @Override
     public User loadUserByUsername(String username) {
