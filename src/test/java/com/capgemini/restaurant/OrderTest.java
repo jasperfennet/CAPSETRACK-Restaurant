@@ -16,6 +16,7 @@ class OrderTest {
     private LocalDateTime date;
 
     List<MenuItem> menuItems = new ArrayList<>();
+    List
 
 
     @BeforeEach

@@ -4,14 +4,15 @@ import com.capgemini.restaurant.Models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IngredientTest {
-  private List<Ingredient> ingredients;
-  private List<Supplier> suppliers;
-  private List<Allergy> allergies;
+  private List<Ingredient> ingredients = new ArrayList<>();
+  private List<Supplier> suppliers = new ArrayList<>();
+  private List<Allergy> allergies = new ArrayList<>();
 
   @BeforeEach
   public void setUp() throws Exception {
