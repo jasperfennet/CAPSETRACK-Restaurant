@@ -19,15 +19,17 @@ class BookingTest {
     private Table table;
     private List<Table> tableList;
     private LocalDateTime date;
+    private List<Supplier> suppliers = new ArrayList<>();
+    private List<Allergy> allergies = new ArrayList<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
 
 
     @BeforeEach
     void setUp() {
         Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "NH" , "Netherlands");
-        Supplier supplier = new Supplier("CheeseTown", address, "+54", "12345678", "mail.address@example.com", "CH12BANK345678910");
-        Allergy lactose = new Allergy("Lactose");
-        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, lactose);
-
+        suppliers.add(new Supplier("CheeseTown", address, "+54", "12345678", "mail.address@example.com", "CH12BANK345678910"));
+        allergies.add(new Allergy("Lactose"));
+        ingredients.add(new Ingredient("Kaas", "Gram", 100, 0.60, suppliers, allergies));
         tableList = new ArrayList<>();
         table = new Table(4, TableType.SQUARE);
         tableList.add(table);
@@ -42,9 +44,8 @@ class BookingTest {
 
         date = LocalDateTime.of(2018, 10, 22, 19, 30);
 
-        menuItem = new MenuItem(1, "Menu 1", "long description of menu", new ArrayList<Ingredient>(),
+        menuItem = new MenuItem(1, "Menu 1", "long description of menu", ingredients,
                 10.00, "link");
-        menuItem.addIngredient(ingredient1);
 
         booking =
                 new Booking(guest,
