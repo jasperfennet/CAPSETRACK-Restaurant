@@ -1,5 +1,6 @@
 package com.capgemini.restaurant.Controllers;
 
+import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.MenuItem;
 import com.capgemini.restaurant.Repository.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class MenuItemController {
     public MenuItem updateByMenuItemNR(@PathVariable int id, @RequestBody MenuItem update){
         Optional<MenuItem> currentMenuItem = menuItemRepository.findById(id);
         if(!currentMenuItem.isPresent()) {
-            throw new RuntimeException();
+            throw new UserNotFoundException("Is Already Present");
         }
         return menuItemRepository.save(update);
     }

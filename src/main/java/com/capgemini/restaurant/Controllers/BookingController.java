@@ -1,5 +1,6 @@
 package com.capgemini.restaurant.Controllers;
 
+import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Booking;
 import com.capgemini.restaurant.Repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class BookingController {
     public Booking updateByBookingNR(@PathVariable int id, @RequestBody Booking update){
         Optional<Booking> currentBooking = bookingRepository.findById(id);
         if(!currentBooking.isPresent()) {
-            throw new RuntimeException();
+            throw new UserNotFoundException("Is Already Present");
         }
         return bookingRepository.save(update);
     }

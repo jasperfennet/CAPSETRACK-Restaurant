@@ -54,7 +54,7 @@ public class GuestController {
     public Guest updateByGuestNR(@PathVariable int id, @RequestBody Guest update){
         Optional<Guest> currentGuest = guestRepository.findById(id);
         if(!currentGuest.isPresent()) {
-            throw new RuntimeException();
+            throw new UserNotFoundException("Is Already Present");
         }
         return guestRepository.save(update);
     }

@@ -1,5 +1,6 @@
 package com.capgemini.restaurant.Controllers;
 
+import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Table;
 import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class TableController {
     public Table updateByTableNR(@PathVariable int id, @RequestBody Table update){
         Optional<Table> currentTable = tableRepository.findById(id);
         if(!currentTable.isPresent()) {
-            throw new RuntimeException();
+            throw new UserNotFoundException("Is Already Present");
         }
         return tableRepository.save(update);
     }

@@ -59,7 +59,7 @@ public class EmployeeController {
     public Employee updateByEmployeeNR(@PathVariable int id, @RequestBody Employee update) {
         Optional<Employee> currentEmployee = employeeRepository.findById(id);
         if (!currentEmployee.isPresent()) {
-            throw new RuntimeException();
+            throw new UserNotFoundException("Is Already Present");
         }
         return employeeRepository.save(update);
     }
