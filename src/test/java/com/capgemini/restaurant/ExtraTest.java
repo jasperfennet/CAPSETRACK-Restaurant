@@ -1,17 +1,17 @@
 package com.capgemini.restaurant;
 
-import com.capgemini.restaurant.Models.*;
-import org.junit.jupiter.api.BeforeEach;
+
+import com.capgemini.restaurant.Models.Extra;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
 
 public class ExtraTest {
 
     private Extra extra;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
     extra = new Extra("Child Chair", 0.00);
     }
@@ -34,6 +34,7 @@ public class ExtraTest {
         assertEquals(0.15, extra.getPrice());
 
     }
+
 
     @Test
     public void setPrice() {

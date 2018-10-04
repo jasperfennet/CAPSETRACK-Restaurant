@@ -34,10 +34,7 @@ class BookingTest {
         table = new Table(4, TableType.SQUARE);
         tableList.add(table);
 
-        guest = new Guest("Henk", "Smit", "henk.smit@email.com",
-                new Address("A Street", 123, "a", "1234AB",
-                        "Amsterdam", "NH", "Netherlands"), "+31",
-                "12345678", true);
+        guest = new Guest(1,"Pietje3", "Puk3", "pietje3.puk3@test.com", address, Role.Guest, "greatusername", "greatpassword", "+31", "12345678", true);
 
         bookingId = 1;
         amountOfPersons = 4;
@@ -66,11 +63,9 @@ class BookingTest {
 
     @Test
     void setGuest() {
-        Guest newGuest;
-        newGuest = new Guest("Anja", "de Vries", "anja.de.vries@email.com",
-                new Address("B Lane", 42, "b", "5678XY",
-                        "Utrecht", "UT", "Netherlands"), "+31",
-                "12345678", true);
+
+        Guest newGuest = new Guest(1,"Anja", "de Vries", "pietje3.puk3@test.com", new Address(), Role.Guest, "greatusername", "greatpassword", "+31", "12345678", true);
+
         booking.setGuest(newGuest);
         assertEquals(newGuest, booking.getGuest());
         assertNotEquals(guest, newGuest);

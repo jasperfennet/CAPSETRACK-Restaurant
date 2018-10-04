@@ -13,7 +13,7 @@ public class GuestTest {
     @BeforeEach
     void setUp() {
         address = new Address("A Street", 123, "", "1234AB", "Amsterdam", "NH", "Netherlands");
-        guest1 = new Guest("Pietje3", "Puk3", "pietje3.puk3@test.com", address, "+31", "12345678", true);
+        guest1 = new Guest(1,"Pietje3", "Puk3", "pietje3.puk3@test.com", address, Role.Guest, "greatusername", "greatpassword", "+31", "12345678", true);
     }
 
     @Test
@@ -63,8 +63,10 @@ public class GuestTest {
 
     @Test
     void getGuestID() {
-        Guest newGuest1 = new Guest("a", "b", "c", address, "+31", "12345678", false);
-        Guest newGuest2 = new Guest("d", "e", "f", address, "+31", "87654321", true);
+        Guest newGuest1 = new Guest(2,"Pietje3", "Puk3", "pietje3.puk3@test.com", address, Role.Guest, "greatusername", "greatpassword", "+31", "12345678", true);
+
+        Guest newGuest2 = new Guest(3,"Pietje3", "Puk3", "pietje3.puk3@test.com", address, Role.Guest, "greatusername", "greatpassword", "+31", "12345678", true);
+
         int newGuest1ID = newGuest1.getId();
         int newGuest2ID = newGuest2.getId();
 

@@ -15,7 +15,9 @@ public class Supplier {
     private String billingNr;
     private String emailAddress;
 
-    public Supplier(){}
+    public Supplier() {
+    }
+
     public Supplier(String name, Address address, String phoneCountryCode, String phoneNumber,
                     String billingNr, String emailAddress) {
         this.name = name;

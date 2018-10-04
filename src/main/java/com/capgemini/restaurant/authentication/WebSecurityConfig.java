@@ -1,10 +1,13 @@
 package com.capgemini.restaurant.authentication;
 
+import com.capgemini.restaurant.Models.Address;
+import com.capgemini.restaurant.Models.Employee;
+import com.capgemini.restaurant.Models.Person;
+import com.capgemini.restaurant.Models.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(HttpSecurity auth) throws Exception{
+    public void configure(HttpSecurity auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
         auth.userDetailsService(userDetailsService());
         auth
@@ -29,12 +32,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()
                 .antMatchers("/scripts/**").permitAll()
                 .antMatchers("/styles/**").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/h2-console/**").hasRole("Owner")
+                .antMatchers("/console/**").hasRole("Owner")
+                .antMatchers("/api/guest/post").permitAll()
                 .anyRequest().fullyAuthenticated()
+
                 .and()
                 .formLogin();
 
         auth.csrf().disable();
+        auth.headers().frameOptions().disable();
     }
+
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
@@ -48,8 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
+
+
+
