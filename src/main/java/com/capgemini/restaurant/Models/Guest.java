@@ -9,8 +9,9 @@ public class Guest extends Person implements Credentials {
     private String password;
 
     public Guest(){}
-    public Guest(int id, String firstName, String lastName, String emailAddress, String streetname, int houseNR, String addition, String zipcode, String city, String country, Role role, String username, String password) {
-        super(id, firstName, lastName, emailAddress, streetname, houseNR, addition, zipcode, city, country, role);
+
+    public Guest(int id, String firstName, String lastName, String emailAddress, Address address, Role role, String username, String password) {
+        super(id, firstName, lastName, emailAddress, address, role);
         this.username = username;
         this.password = password;
     }
