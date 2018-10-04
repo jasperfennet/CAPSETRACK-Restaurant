@@ -12,19 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class MenuItemTest {
 
     private MenuItem menuItem;
+    private List<Ingredient> ingredients = new ArrayList<>();
+    private List<Supplier> suppliers = new ArrayList<>();
+    private List<Allergy> allergies = new ArrayList<>();
 
     @BeforeEach
     public void setUp() throws Exception {
         Address address = new Address("Streetname", 155, "", "541000", "Wuhan", "11", "China");
-        Supplier supplier = new Supplier("MeatDelivery", address, "+54","0612345678", "NL12BANK1234567810", "mail@example.com");
+        suppliers.add(new Supplier("MeatDelivery", address, "+54","0612345678", "NL12BANK1234567810", "mail@example.com"));
 
-        Ingredient ingr1 = new Ingredient("Carrot", "grams", 1000, 0.50d, supplier, null);
-        Allergy lactose = new Allergy("Lactose");
-        Ingredient ingr2 = new Ingredient("Milk", "liters", 10, 1.00d, supplier, lactose);
-
-        ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-        ingredients.add(ingr1);
-        ingredients.add(ingr2);
+        ingredients.add(new Ingredient("Carrot", "grams", 1000, 0.50d, suppliers, null));
+        allergies.add(new Allergy("Lactose"));
+        ingredients.add(new Ingredient("Milk", "liters", 10, 1.00d, suppliers, allergies));
 
         menuItem = new MenuItem(1, "Menu", "Description", ingredients, 10.00, "image link");
     }
