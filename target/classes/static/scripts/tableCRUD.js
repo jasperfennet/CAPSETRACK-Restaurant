@@ -16,7 +16,7 @@ function getData() {
 function deleteTable(tableNR) {
     console.log(tableNR);
     $.ajax({
-        url: "http://localhost:8080/api/tables/delete/" + tableNR,
+        url: "http://localhost:8080/api/table/delete/" + tableNR,
         type: "DELETE",
         success: function(result) {
             // On successful post, reload data to get the added one as well.
@@ -46,7 +46,7 @@ function postData() {
 
     // Post JSON to endpoint.
     $.ajax({
-        url: "http://localhost:8080/api/tables/post",
+        url: "http://localhost:8080/api/table/post",
         type: "post",
         data: validJsonTable,
         contentType: "application/json",
