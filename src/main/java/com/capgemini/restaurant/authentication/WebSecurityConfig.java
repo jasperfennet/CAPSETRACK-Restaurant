@@ -1,5 +1,9 @@
 package com.capgemini.restaurant.authentication;
 
+import com.capgemini.restaurant.Models.Address;
+import com.capgemini.restaurant.Models.Employee;
+import com.capgemini.restaurant.Models.Person;
+import com.capgemini.restaurant.Models.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(HttpSecurity auth) throws Exception{
+    public void configure(HttpSecurity auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
         auth.userDetailsService(userDetailsService());
         auth
@@ -42,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.csrf().disable();
         auth.headers().frameOptions().disable();
     }
+
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
@@ -55,8 +60,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
+
+
+
