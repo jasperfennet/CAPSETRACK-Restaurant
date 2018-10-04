@@ -1,10 +1,15 @@
 package com.capgemini.restaurant.Controllers;
 
 import com.capgemini.restaurant.Models.Employee;
+import com.capgemini.restaurant.Models.Person;
+import com.capgemini.restaurant.Models.Role;
 import com.capgemini.restaurant.Repository.EmployeeRepository;
+import com.capgemini.restaurant.authentication.WebSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import sun.security.util.Password;
 
 import java.util.Optional;
 
@@ -14,6 +19,10 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Secured("ROLE_Owner")
     @GetMapping("/list")
@@ -28,6 +37,7 @@ public class EmployeeController {
 
     @PostMapping("/post")
     public Employee addEmployee(@RequestBody Employee newEmployee) {
+       newEmployee.setPassword(passwordEncoder.encode(newEmployee.getPassword()));
        return employeeRepository.save(newEmployee);
     }
 

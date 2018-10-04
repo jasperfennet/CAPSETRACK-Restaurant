@@ -1,0 +1,17 @@
+{
+	"id" : 1,
+	"firstName": "a",
+	"lastName": "a",
+	"emailAddress": "a",
+	"address":{
+		"streetname": "a",
+		"houseNR": 1,
+		"addition": "a",
+		"zipcode": "a",
+		"city": "a",
+		"country": "a"
+	},
+	"role": "Owner",
+	"userName": "a",
+	"password": "a"
+}

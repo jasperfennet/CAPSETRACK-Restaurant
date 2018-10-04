@@ -9,7 +9,10 @@ public interface Credentials {
 
     String getUserName();
     String getPassword();
+    Role getRole();
     void setUserName(String username);
     void setPassword(String password);
+
+
 
 }

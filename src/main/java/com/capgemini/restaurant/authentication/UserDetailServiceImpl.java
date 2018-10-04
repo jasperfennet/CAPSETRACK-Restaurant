@@ -1,6 +1,7 @@
 package com.capgemini.restaurant.authentication;
 
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
+import com.capgemini.restaurant.Models.Credentials;
 import com.capgemini.restaurant.Models.Employee;
 import com.capgemini.restaurant.Models.Guest;
 import com.capgemini.restaurant.Repository.EmployeeRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class UserDetailServiceImpl implements UserDetailsService {
 
@@ -18,8 +20,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private GuestRepository guestRepository;
-
-
+    
     //zowel guest als employee gemaakt worden
     @Override
     public User loadUserByUsername(String username) {
@@ -38,14 +39,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 //    Arrays.asList(new SimpleGrantedAuthority()) voegt rollen toe.
 
-    private User mapPersonToUser(Employee employee){
-        return new User(employee.getUserName(), employee.getPassword(), Arrays.asList(new SimpleGrantedAuthority(employee.getRole().toString())));
+    private User mapPersonToUser(Credentials credential){
+        return new User(credential.getUserName(), credential.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_" + credential.getRole().toString())));
     }
-    private User mapPersonToUser(Guest guest){
-        return new User(guest.getUserName(), guest.getPassword(), Arrays.asList(new SimpleGrantedAuthority(guest.getRole().toString())));
-    }
-//    private User mapPersonToUser(Guest guest){
-//        return new User(guest.getUserName(), guest.getPassword(), Arrays.asList(new SimpleGrantedAuthority(guest.getRole().toString())));
-//    }
-
 }
