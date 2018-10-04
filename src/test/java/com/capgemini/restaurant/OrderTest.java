@@ -16,7 +16,9 @@ class OrderTest {
     private LocalDateTime date;
 
     List<MenuItem> menuItems = new ArrayList<>();
-    List
+    List<Allergy> allergies = new ArrayList<>();
+    List<Ingredient> ingredients = new ArrayList<>();
+    List<Supplier> suppliers = new ArrayList<>();
 
 
     @BeforeEach
@@ -24,12 +26,11 @@ class OrderTest {
 
         Address address = new Address("A Street", 123, "a", "1234AB", "Amsterdam", "NH", "Netherlands");
 
-        Supplier supplier = new Supplier("CheeseTown", address, "+54", "12345678", "CH12BANK345678910", "mail.address@example.com");
-        Allergy lactose = new Allergy("Lactose");
-        Ingredient ingredient1 = new Ingredient("Kaas", "Gram", 100, 0.60, supplier, lactose);
+        suppliers.add(new Supplier("CheeseTown", address, "+54", "12345678", "CH12BANK345678910", "mail.address@example.com"));
+        allergies.add(new Allergy("Lactose"));
+        ingredients.add(new Ingredient("Kaas", "Gram", 100, 0.60, suppliers, allergies));
 
-        MenuItem menuItem = new MenuItem(1, "Menu1", "long description of menu",  new ArrayList<Ingredient>(), 10.00, "image link");
-        menuItem.addIngredient(ingredient1);
+        MenuItem menuItem = new MenuItem(1, "Menu1", "long description of menu",  ingredients, 10.00, "image link");
         menuItems.add(menuItem);
 
         date = LocalDateTime.of(2018, 10, 20, 19, 30);
