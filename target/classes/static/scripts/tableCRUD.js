@@ -14,7 +14,7 @@ function getData() {
 }
 
 function deleteTable(tableNR) {
-     
+
     $.ajax({
         url: "http://localhost:8080/api/table/delete/" + tableNR,
         type: "DELETE",
@@ -74,6 +74,7 @@ $(document).ready(function() {
 
     $('#myTable').DataTable({
         columns: [
+            { data: "id"},
             { data: "number" },
             { data: "capacity" },
             {

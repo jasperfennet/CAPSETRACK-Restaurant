@@ -46,8 +46,13 @@ public class InitialDataLoader {
                 new Address("molveno", 1, "", "abcd12", "Beijing", "China", ""),
                 Role.Guest, "guest", encryptPassword("guestPassword"), "+316", "123456789",true));
 
-        tableRepository.save(new Table(1, TableType.ROUND));
-        tableRepository.save(new Table(2, TableType.SQUARE));
+        for(int i = 0; i < 15; i++){
+            if(i % 2 == 0)
+                tableRepository.save(new Table(i+1, TableType.ROUND));
+            else
+                tableRepository.save(new Table(i+1, TableType.SQUARE));
+        }
+
     }
 
     private String encryptPassword(String password) {
