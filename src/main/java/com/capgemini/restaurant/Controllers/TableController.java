@@ -16,7 +16,7 @@ public class TableController {
     @Autowired
     private TableRepository tableRepository;
 
-    @Secured({"ROLE_Owner","ROLE_Floormanager","ROLE_Restaurant"})
+    //@Secured({"ROLE_Owner","ROLE_Floormanager","ROLE_Restaurant"})
     @GetMapping("/list")
     public Iterable<Table> list() {
         return tableRepository.findAll();
@@ -31,10 +31,15 @@ public class TableController {
     public Table addTable(@RequestBody Table newTable) {
        return tableRepository.save(newTable);
     }
-    @Secured({"ROLE_Owner","ROLE_Floormanager"})
+
+
+    //@Secured({"ROLE_Owner","ROLE_Floormanager"})
     @DeleteMapping("/delete/{id}")
     public void deleteByTableNR(@PathVariable int id){ tableRepository.deleteById(id);
     }
+
+
+
     @Secured({"ROLE_Owner","ROLE_Floormanager"})
     @PutMapping("update/{id}")
     public Table updateByTableNR(@PathVariable int id, @RequestBody Table update){
