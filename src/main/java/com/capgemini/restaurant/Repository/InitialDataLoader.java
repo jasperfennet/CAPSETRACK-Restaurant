@@ -1,11 +1,13 @@
 package com.capgemini.restaurant.Repository;
 
 import com.capgemini.restaurant.Models.*;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,9 @@ public class InitialDataLoader {
 
     @Autowired
     private TableRepository tableRepository;
+
+    @Autowired
+    private BookingRepository bookingRepository;
 
     @PostConstruct
     public void createUsers() {
@@ -48,6 +53,25 @@ public class InitialDataLoader {
 
         tableRepository.save(new Table(1, TableType.ROUND));
         tableRepository.save(new Table(2, TableType.SQUARE));
+    }
+
+    @PostConstruct
+    public void createBookings(){
+
+        List<Booking> bookings = new ArrayList<>();
+
+        LocalDateTime date = LocalDateTime.of(2018, 10, 20, 19, 00);
+
+        for(int i = 0; i < 5; i++){
+            Booking booking = new Booking();
+            booking.setAmountOfPersons(i+1);
+            booking.setDate(date);
+            bookings.add(booking);
+        }
+
+        for (Booking booking : bookings) {
+            bookingRepository.save(booking);
+        }
     }
 
     private String encryptPassword(String password) {
