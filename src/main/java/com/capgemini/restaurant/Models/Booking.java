@@ -2,7 +2,7 @@ package com.capgemini.restaurant.Models;
 
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
 import java.time.*;
 import java.util.List;
 
@@ -19,19 +19,23 @@ public class Booking {
     private int amountOfPersons;
     @ManyToMany
     private List<Extra> extras;
-    @OneToMany
-    private List<Order> orders;
+//    @OneToMany
+//    private List<Order> orders;
     @ManyToMany
     private List<Table> table;
 
-    public Booking(){}
+    public Booking(){
+        this.extras = new ArrayList<>();
+//        this.orders = new ArrayList<>();
+        this.table = new ArrayList<>();
+    }
     public Booking(Guest guest, int id, LocalDateTime date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
         this.date = date;
         this.amountOfPersons = amountOfPersons;
         this.extras = extras;
-        this.orders = orders;
+//        this.orders = orders;
     }
 
     public Guest getGuest() {
@@ -66,9 +70,9 @@ public class Booking {
         this.amountOfPersons = amountOfPersons;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
 
     public List<Extra> getExtras() {
         return extras;
@@ -82,13 +86,13 @@ public class Booking {
         extras.remove(extra);
     }
 
-    public void addOrder(Order order) {
-        orders.add(order);
-    }
-
-    public void removeOrder(Order order) {
-        orders.remove(order);
-    }
+//    public void addOrder(Order order) {
+//        orders.add(order);
+//    }
+//
+//    public void removeOrder(Order order) {
+//        orders.remove(order);
+//    }
 
     public List<Table> getTable() {
         return table;
