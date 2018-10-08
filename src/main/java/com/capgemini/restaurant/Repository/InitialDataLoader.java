@@ -62,9 +62,15 @@ public class InitialDataLoader {
 
         LocalDateTime date = LocalDateTime.of(2018, 10, 20, 19, 00);
 
+        Guest guest = new Guest(10, "Mister", "Guest", "MisterGuest@molveno.com",
+                new Address("molveno", 1, "", "abcd12", "Beijing", "China", ""),
+                Role.Guest, "guest", encryptPassword("guestPassword"), "+316", "123456789",true);
+
         for(int i = 0; i < 5; i++){
             Booking booking = new Booking();
             booking.setAmountOfPersons(i+1);
+            guest.setFirstName("Guest " + i);
+            booking.setGuest(guestRepository.save(guest));
             booking.setDate(date);
             bookings.add(booking);
         }
