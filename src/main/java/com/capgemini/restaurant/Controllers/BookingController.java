@@ -27,9 +27,12 @@ public class BookingController {
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})
     @GetMapping("/get/{id}")
     public Booking findByBookingNR(@PathVariable int id) {
+        Optional<Booking> currentBooking = bookingRepository.findById(id);
+        if(!currentBooking.isPresent()) {
+            throw new UserNotFoundException("Booking ID does not exist");
+        }
         return bookingRepository.findById(id).get();
     }
-
 
     @PostMapping("/post")
     public Booking addBooking(@RequestBody Booking newBooking) {
@@ -38,7 +41,12 @@ public class BookingController {
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})
     @DeleteMapping("/delete/{id}")
-    public void deleteByBookingNR(@PathVariable int id){ bookingRepository.deleteById(id);
+    public void deleteByBookingNR(@PathVariable int id){
+        Optional<Booking> currentBooking = bookingRepository.findById(id);
+        if(!currentBooking.isPresent()) {
+            throw new UserNotFoundException("Booking ID not found.");
+        }
+        bookingRepository.deleteById(id);
     }
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager", "ROLE_Guest","ROLE_Owner"})
