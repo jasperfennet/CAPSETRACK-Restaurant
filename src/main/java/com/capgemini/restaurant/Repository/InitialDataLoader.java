@@ -29,6 +29,9 @@ public class InitialDataLoader {
     @Autowired
     private BookingRepository bookingRepository;
 
+    @Autowired
+    private ExtraRepository extraRepository;
+
     @PostConstruct
     public void createUsers() {
         List<Person> persons = new ArrayList<>();

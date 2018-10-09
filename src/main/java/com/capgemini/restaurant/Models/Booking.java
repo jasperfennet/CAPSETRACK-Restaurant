@@ -2,7 +2,7 @@ package com.capgemini.restaurant.Models;
 
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
 import java.time.*;
 import java.util.List;
 
@@ -24,7 +24,11 @@ public class Booking {
     @ManyToMany
     private List<Table> table;
 
-    public Booking(){}
+    public Booking(){
+        this.extras = new ArrayList<>();
+        this.orders = new ArrayList<>();
+        this.table = new ArrayList<>();
+    }
     public Booking(Guest guest, int id, LocalDateTime date, int amountOfPersons, List<Extra> extras, List<Order> orders, List<Table> table) {
         this.guest = guest;
         this.id = id;
