@@ -54,9 +54,11 @@ public class BookingController {
     public Booking updateByBookingNR(@PathVariable int id, @RequestBody Booking update){
         Optional<Booking> currentBooking = bookingRepository.findById(id);
         if(!currentBooking.isPresent()) {
-            throw new UserNotFoundException("Is Already Present");
+            throw new UserNotFoundException("Booking ID not found.");
         }
-        return bookingRepository.save(update);
+        currentBooking.get().setAmountOfPersons(update.getAmountOfPersons());
+        currentBooking.get().setDate(update.getDate());
+        return bookingRepository.save(currentBooking.get());
     }
 }
 

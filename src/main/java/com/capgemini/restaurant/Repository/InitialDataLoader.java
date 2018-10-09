@@ -50,7 +50,7 @@ public class InitialDataLoader {
             employeeRepository.save((Employee) person);
         }
 
-        guestRepository.save(new Guest(10, "Mister", "Lastname", "MisterGuest@molveno.com",
+        guestRepository.save(new Guest(10, "Mister", "Guest", "MisterGuest@molveno.com",
                 new Address("molveno", 1, "", "abcd12", "Beijing", "China", ""),
                 Role.Guest, "guest", encryptPassword("guestPassword"), "+316", "123456789",true));
 
@@ -62,19 +62,26 @@ public class InitialDataLoader {
     public void createBookings(){
 
         List<Booking> bookings = new ArrayList<>();
+        List<Table> table = new ArrayList<>();
 
         LocalDateTime date = LocalDateTime.of(2018, 10, 20, 19, 00);
 
-        Guest guest = new Guest(10, "Mister", "Guest", "MisterGuest@molveno.com",
+        Guest guest = new Guest(10, "Mister", "Lastname", "MisterGuest@molveno.com",
                 new Address("molveno", 1, "", "abcd12", "Beijing", "China", ""),
                 Role.Guest, "guest", encryptPassword("guestPassword"), "+316", "123456789",true);
 
         for(int i = 0; i < 5; i++){
             Booking booking = new Booking();
             booking.setAmountOfPersons(i+1);
-            guest.setFirstName("Guest " + i);
+            guest.setFirstName("Guest" + i);
             booking.setGuest(guestRepository.save(guest));
             booking.setDate(date);
+
+//            table.clear();
+//            table.add(tableRepository.save(new Table(i+10, TableType.ROUND)));
+//            table.add(tableRepository.save(new Table(i+20, TableType.SQUARE)));
+//            booking.setTable(table);
+
             bookings.add(booking);
         }
 

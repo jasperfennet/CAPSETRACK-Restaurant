@@ -33,6 +33,7 @@
                                     <th>First name</th>
                                     <th>Last name</th>
                                     <th>Number of persons</th>
+                                    <th>Table number</th>
                                     <th width="150px">Manage</th>
                                 </tr>
                             </thead>
@@ -42,8 +43,8 @@
                     </div>
                 </div>
 
-                <!-- New Book Modal -->
-    <div id="newBookingModal" class="modal fade" role="dialog">
+                <!-- New Booking Modal -->
+                <div id="newBookingModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
             
                 <!-- Content-->
@@ -57,38 +58,38 @@
     
                         <form data-toggle="validator" role="form" id="newBookingForm" onsubmit="return false;">
                             <div class="form-group">
-                                <label for="inputTitle" class="control-label">Date</label>
-                                <input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>
+                                <label for="inputDate" class="control-label">Date</label>
+                                <input type="text" class="form-control" id="inputDate" placeholder="Enter a descriptive title">
                             </div>
 
                             <div class="form-group">
-                                <label for="inputTitle" class="control-label">Number of persons</label>
-                                <input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>
+                                <label for="inputNumberPersons" class="control-label">Number of persons</label>
+                                <input type="text" class="form-control" id="inputNumberPersons" placeholder="Enter a descriptive title" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputTitle" class="control-label">Guest</label>
-                                <input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>
+                                <label for="inputGuest" class="control-label">Guest</label>
+                                <input type="text" class="form-control" id="inputGuest" placeholder="Enter a descriptive title">
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputTitle" class="control-label">Extras</label>
-                                <input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="inputAuthor" class="control-label">Orders</label>
-                                <input type="text" class="form-control" id="inputAuthor" placeholder="Who's the author?" required>
-                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputTitle" class="control-label">Extras</label>-->
+                                <!--<input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>-->
+                            <!--</div>-->
+    <!---->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputAuthor" class="control-label">Orders</label>-->
+                                <!--<input type="text" class="form-control" id="inputAuthor" placeholder="Who's the author?" required>-->
+                            <!--</div>-->
 
                             <div class="form-group">
-                                <label for="inputAuthor" class="control-label">Tables</label>
-                                <input type="text" class="form-control" id="inputAuthor" placeholder="Who's the author?" required>
-                            </div>                            
+                                <label for="inputTable" class="control-label">Table</label>
+                                <input type="text" class="form-control" id="inputTable" placeholder="Choose table">
+                            </div>
     
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button id="closeNew" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
     
                         </form>
@@ -97,7 +98,59 @@
             
             </div>
         </div>
-        <!-- End of new Book Modal -->
+                <!-- End of new Booking Modal -->
+
+                <!--Update Booking Modal-->
+                <div id="updateBookingModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Update Booking</h4><h4 class="modal-title" id="IdToUpdate"></h4>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form data-toggle="validator" role="form" id="updateBookingForm" onsubmit="return false;">
+                                    <div class="form-group">
+                                        <label for="updateDate" class="control-label">Date</label>
+                                        <input type="text" class="form-control" id="updateDate" placeholder="Enter a descriptive title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateNumberPersons" class="control-label">Number of persons</label>
+                                        <input type="text" class="form-control" id="updateNumberPersons" placeholder="Enter a descriptive title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateFirstName" class="control-label">First name</label>
+                                        <input type="text" class="form-control" id="updateFirstName" placeholder="Enter a descriptive title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateLastName" class="control-label">Last name</label>
+                                        <input type="text" class="form-control" id="updateLastName" placeholder="Enter a descriptive title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateTable" class="control-label">Table</label>
+                                        <input type="text" class="form-control" id="updateTable" placeholder="Choose table">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button id="closeUpdate" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--End of update Booking Modal-->
             </div>
         </div>
     </div>
