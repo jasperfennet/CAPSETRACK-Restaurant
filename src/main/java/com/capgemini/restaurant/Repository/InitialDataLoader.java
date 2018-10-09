@@ -47,7 +47,7 @@ public class InitialDataLoader {
             employeeRepository.save((Employee) person);
         }
 
-        guestRepository.save(new Guest(10, "Mister", "Guest", "MisterGuest@molveno.com",
+        guestRepository.save(new Guest(10, "Mister", "Lastname", "MisterGuest@molveno.com",
                 new Address("molveno", 1, "", "abcd12", "Beijing", "China", ""),
                 Role.Guest, "guest", encryptPassword("guestPassword"), "+316", "123456789",true));
 
