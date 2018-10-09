@@ -62,9 +62,6 @@ public class InitialDataLoader {
     public void createBookings(){
 
         List<Booking> bookings = new ArrayList<>();
-        Extra extra = new Extra("Violin quartet", 100.0);
-        List<Table> tables = new ArrayList<>();
-        //Order order = new Order();
 
         LocalDateTime date = LocalDateTime.of(2018, 10, 20, 19, 00);
 
@@ -78,10 +75,6 @@ public class InitialDataLoader {
             guest.setFirstName("Guest " + i);
             booking.setGuest(guestRepository.save(guest));
             booking.setDate(date);
-//            booking.addExtra(extraRepository.save(extra));
-//            tables.add(tableRepository.save(new Table(1, TableType.ROUND)));
-//            booking.setTable(tables);
-//            booking.addOrder(order);
             bookings.add(booking);
         }
 
