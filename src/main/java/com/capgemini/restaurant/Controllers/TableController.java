@@ -2,11 +2,14 @@ package com.capgemini.restaurant.Controllers;
 
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Table;
+import com.capgemini.restaurant.Models.TableStatus;
 import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,6 +46,47 @@ public class TableController {
             throw new UserNotFoundException("Is Already Present");
         }
         return tableRepository.save(update);
+    }
+    @Secured({"ROLE_Owner","ROLE_Floormanager","ROLE_Restaurant"})
+    @GetMapping("/get/available")
+    public Iterable<Table> findAvailableTables() {
+
+        Iterable<Table> allTables = tableRepository.findAll();
+        List<Table> availableTables = new ArrayList<>();
+        for (Table table : allTables) {
+            if (table.getStatus() == TableStatus.AVAILABLE) {
+                availableTables.add(table);
+            }
+        }
+        return availableTables;
+    }
+
+    @Secured({"ROLE_Owner","ROLE_Floormanager","ROLE_Restaurant"})
+    @GetMapping("/get/reserved")
+    public Iterable<Table> findReservedTables() {
+
+        Iterable<Table> allTables = tableRepository.findAll();
+        List<Table> reservedTables = new ArrayList<>();
+        for (Table table : allTables) {
+            if (table.getStatus() == TableStatus.RESERVED) {
+                reservedTables.add(table);
+            }
+        }
+        return reservedTables;
+    }
+
+    @Secured({"ROLE_Owner","ROLE_Floormanager","ROLE_Restaurant"})
+    @GetMapping("/get/toolate")
+    public Iterable<Table> findTooLateTables() {
+
+        Iterable<Table> allTables = tableRepository.findAll();
+        List<Table> tooLateTables = new ArrayList<>();
+        for (Table table : allTables) {
+            if (table.getStatus() == TableStatus.TOO_LATE) {
+                tooLateTables.add(table);
+            }
+        }
+        return tooLateTables;
     }
 }
 
