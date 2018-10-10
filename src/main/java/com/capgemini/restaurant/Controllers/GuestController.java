@@ -12,6 +12,7 @@ import sun.security.util.Password;
 
 import java.util.Optional;
 
+@CrossOrigin
 @Secured("ROLE_Owner")
 @RestController
 @RequestMapping("/api/guest")

@@ -3,20 +3,27 @@ package com.capgemini.restaurant.Controllers;
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Booking;
 import com.capgemini.restaurant.Repository.BookingRepository;
+import com.capgemini.restaurant.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
-import java.util.Collection;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/booking")
 public class BookingController {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private GuestRepository guestRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Secured({"ROLE_Owner","ROLE_Restaurant","ROLE_Floormanager"})
     @GetMapping("/list")
@@ -36,7 +43,10 @@ public class BookingController {
 
     @PostMapping("/post")
     public Booking addBooking(@RequestBody Booking newBooking) {
-       return bookingRepository.save(newBooking);
+        newBooking.getGuest().setPassword(passwordEncoder.encode(newBooking.getGuest().getPassword()));
+        newBooking.setGuest(guestRepository.save(newBooking.getGuest()));
+        return bookingRepository.save(newBooking);
+
     }
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})
