@@ -56,6 +56,13 @@ public class InitialDataLoader {
 
         tableRepository.save(new Table(1, TableType.ROUND));
         tableRepository.save(new Table(2, TableType.SQUARE));
+        Table table3 = new Table(3, TableType.ROUND);
+        table3.setStatus(TableStatus.RESERVED);
+        tableRepository.save(table3);
+        Table table4 = new Table(4, TableType.ROUND);
+        table4.setStatus(TableStatus.TOO_LATE);
+        tableRepository.save(table4);
+
     }
 
     @PostConstruct
