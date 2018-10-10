@@ -73,24 +73,24 @@ function updateData() {
     var updatedFirstName = $("#updateFirstName").val();
     var updatedLastName = $("#updatedLastName").val();
     var updatedTable = $("#updateTable").val();
+    console.log("tableval (id?): " + updatedTable);
 
     // Create JS object with data.
     var updatedBooking = {
         date: updatedDate,
-        amountOfPersons: updatedAmount
+        amountOfPersons: updatedAmount,
 //        guest: {
 //                    firstName: updatedFirstName,
 //                    lastName: updatedLastName
 //               }
-//        table: {
-//                    tableNumber: updatedTable
-//               }
+        table: [{
+                    id: updatedTable
+               }]
         };
 
     // Convert JS object to JSON.
     var validJsonBooking = JSON.stringify(updatedBooking);
-    console.log(validJsonBooking);
-    console.log(id);
+    console.log("valid jsonbooking: " + validJsonBooking);
 
     // Post JSON to endpoint.
     $.ajax({
@@ -103,6 +103,26 @@ function updateData() {
             getData();
         }
     });
+}
+
+function populateTablesDropdown(){
+
+	$.ajax({
+		url: "http://localhost:8080/api/table/list",
+		type: "get",
+		success: function(data){
+			let dropdown = $("#updateTable");
+			$.each(data, function(index, value){
+//				dropdown.append(new Option(value.number));
+                dropdown.append($("<option></option>")
+                                 .attr("value",value.id)
+                                 .text(value.number));
+			});
+		},
+		error: function(error){
+			console.log("Error: " + error);
+		}
+	});
 }
 
 $(document).ready(function() {
@@ -119,8 +139,6 @@ $(document).ready(function() {
 
     // Modal update booking submit.
     $("#updateBookingModal").on('submit', function(e) {
-        console.log(e);
-        console.log(e.children);
         updateData();
         // Reset modal to hide and no values.
         $('#updateBookingModal').modal('hide');
@@ -138,13 +156,40 @@ $(document).ready(function() {
             { data: "guest.firstName" },
             { data: "guest.lastName" },
             { data: "amountOfPersons" },
-            { data: "table" },
-            {
-                data: function() {
+            { data: function(data){
+                        var tables = "";
+                        $.each(data.table, function(index, value){
+                            console.log(value);
+                            if(tables == ""){
+                                tables = tables + value.number;
+                            }
+                            else{
+                                tables = tables + ", " + value.number;
+                            }
+                            console.log(tables);
+                        });
+                        return tables;
+                    }
+
+//            function( data, type, row){
+//                        var text = "";
+//                        console.log(data);
+//                        $.each(data, function(index, value) {
+//                            console.log(text);
+//                            text = text + value.number;
+//                        });
+//                        console.log(text);
+//                        return text;
+//                    }
+            },
+            //{ data: "table" },
+            { data: function() {
                     return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateBookingModal" onclick="fillUpdateModal(this.parentElement.parentElement.children)">Update</button>' + '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
             },
         ]
     });
     getData();
+
+    populateTablesDropdown();
 })

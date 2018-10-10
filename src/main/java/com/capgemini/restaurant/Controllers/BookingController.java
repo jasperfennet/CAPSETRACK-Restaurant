@@ -2,13 +2,17 @@ package com.capgemini.restaurant.Controllers;
 
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Booking;
+import com.capgemini.restaurant.Models.Table;
 import com.capgemini.restaurant.Repository.BookingRepository;
+import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +21,9 @@ public class BookingController {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private TableRepository tableRepository;
 
     @Secured({"ROLE_Owner","ROLE_Restaurant","ROLE_Floormanager"})
     @GetMapping("/list")
@@ -58,6 +65,16 @@ public class BookingController {
         }
         currentBooking.get().setAmountOfPersons(update.getAmountOfPersons());
         currentBooking.get().setDate(update.getDate());
+
+        List<Table> addedTables = new ArrayList<>();
+        for (Table table : update.getTable()) {
+            Optional <Table> findTable = tableRepository.findById(table.getId());
+            if(!findTable.isPresent())
+                throw new UserNotFoundException("Table ID not found");
+            addedTables.add(findTable.get());
+        }
+
+        currentBooking.get().setTable(addedTables);
         return bookingRepository.save(currentBooking.get());
     }
 }
