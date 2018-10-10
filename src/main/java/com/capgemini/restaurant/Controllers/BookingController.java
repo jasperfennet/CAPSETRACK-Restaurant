@@ -3,6 +3,7 @@ package com.capgemini.restaurant.Controllers;
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Booking;
 import com.capgemini.restaurant.Models.Table;
+import com.capgemini.restaurant.Models.TableStatus;
 import com.capgemini.restaurant.Repository.BookingRepository;
 import com.capgemini.restaurant.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,7 @@ public class BookingController {
             Optional <Table> findTable = tableRepository.findById(table.getId());
             if(!findTable.isPresent())
                 throw new UserNotFoundException("Table ID not found");
+            findTable.get().setStatus(TableStatus.RESERVED);
             addedTables.add(findTable.get());
         }
 

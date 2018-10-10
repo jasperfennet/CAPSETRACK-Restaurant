@@ -101,6 +101,7 @@ function updateData() {
         success: function(result) {
             // On successful post, reload data to get the added one as well.
             getData();
+            populateTablesDropdown();
         }
     });
 }
@@ -108,13 +109,18 @@ function updateData() {
 function populateTablesDropdown(){
 
 	$.ajax({
-		url: "http://localhost:8080/api/table/list",
+		url: "http://localhost:8080/api/table/get/available",
 		type: "get",
 		success: function(data){
-			let dropdown = $("#updateTable");
+			let dropdown1 = $("#updateTable");
+			let dropdown2 = $("#inputTable");
+            dropdown1.empty();
+            dropdown2.empty();
 			$.each(data, function(index, value){
-//				dropdown.append(new Option(value.number));
-                dropdown.append($("<option></option>")
+                dropdown1.append($("<option></option>")
+                                 .attr("value",value.id)
+                                 .text(value.number));
+                dropdown2.append($("<option></option>")
                                  .attr("value",value.id)
                                  .text(value.number));
 			});
