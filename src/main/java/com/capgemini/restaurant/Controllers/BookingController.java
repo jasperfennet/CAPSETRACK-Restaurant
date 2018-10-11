@@ -6,16 +6,17 @@ import com.capgemini.restaurant.Models.Table;
 import com.capgemini.restaurant.Models.TableStatus;
 import com.capgemini.restaurant.Repository.BookingRepository;
 import com.capgemini.restaurant.Repository.TableRepository;
+import com.capgemini.restaurant.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/booking")
 public class BookingController {
@@ -25,6 +26,10 @@ public class BookingController {
 
     @Autowired
     private TableRepository tableRepository;
+    private GuestRepository guestRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Secured({"ROLE_Owner","ROLE_Restaurant","ROLE_Floormanager"})
     @GetMapping("/list")
@@ -44,7 +49,6 @@ public class BookingController {
 
     @PostMapping("/post")
     public Booking addBooking(@RequestBody Booking newBooking) {
-
         List<Table> addedTables = new ArrayList<>();
         for (Table table : newBooking.getTable()) {
             Optional <Table> findTable = tableRepository.findById(table.getId());
@@ -54,7 +58,11 @@ public class BookingController {
             addedTables.add(findTable.get());
         }
         newBooking.setTable(addedTables);
+      
+        newBooking.getGuest().setPassword(passwordEncoder.encode(newBooking.getGuest().getPassword()));
+        newBooking.setGuest(guestRepository.save(newBooking.getGuest()));
         return bookingRepository.save(newBooking);
+
     }
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})
