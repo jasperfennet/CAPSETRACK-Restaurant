@@ -33,6 +33,7 @@
         var number = $("#inputMenuNR").val();
         var name = $("#inputMenuName").val();
         var description = $("#inputMenuDescription").val();
+        var price = $("#inputMenuPrice").val();
         var ingredients = $("#inputRecipe").val();
 
         // Create JS object with data.
@@ -40,6 +41,7 @@
             id: number,
             name: name,
             menuDescription: description,
+            price: price,
             ingredients: null
         };
          
@@ -80,6 +82,8 @@
             columns: [
                 { data: "id" },
                 { data: "name" },
+                { data: "menuDescription" },
+                { data: "price" },
                 { data: function() {
                         return '<button type="button" class="btn btn-primary">Update</button>'+'<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                     }

@@ -23,7 +23,9 @@
                 <table id="myTable">
                     <thead>
                     <th>id</th>
-                    <th>Naam</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
                     <th width="150px">Manage</th>
                     </thead>
                 </table>
@@ -50,11 +52,11 @@
                     <div class="modal-body">
 
                         <form data-toggle="validator" role="form" id="newMenuForm" onsubmit="return false;">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="inputMenuNR" class="control-label">Insert Menu Item Number</label>
                                 <input type="number" class="form-control" id="inputMenuNR" placeholder="example: 23"
                                        data-error="DAT IS GEEN NAAM BOYO!" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="inputMenuName" class="control-label">Name</label>
                                 <input type="text" class="form-control" id="inputMenuName" placeholder="Chicken" data-error="No text" required>
@@ -62,6 +64,10 @@
                             <div class="form-group">
                                 <label for="inputMenuDescription" class="control-label">Description</label>
                                 <input type="text" class="form-control" id="inputMenuDescription" placeholder="Chicken and Rice and Everything nice" data-error="No text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputMenuPrice" class="control-label">Price</label>
+                                <input type="number" step="0.01" class="form-control" id="inputMenuPrice" placeholder="Price" data-error="No text" required>
                             </div>
                             <div class="form-group">
                                 <label for="inputRecipe" class="control-label">Select Ingredients</label>
