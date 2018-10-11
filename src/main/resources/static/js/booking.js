@@ -1,6 +1,4 @@
 function postBooking() {
-
-
     // Get values from html.
     var firstname = $("#inputFirstname").val();
     var lastname = $("#inputLastname").val();
@@ -24,9 +22,9 @@ function postBooking() {
             emailAddress: email,
             phoneNumber: phonenr,
             userName: username,
-            password: password,
+            password: password
         },
-        amountOfPersons: people,
+        amountOfPersons: people
     };
 
 
@@ -36,7 +34,7 @@ function postBooking() {
     var postResults = null;
     // Post JSON to endpoint.
     $.ajax({
-        url: "http://localhost:8080/api/booking/post",
+        url: "http://localhost:8080/api/booking/guest/post",
         type: "post",
         data: validJsonTable,
         contentType: "application/json",
