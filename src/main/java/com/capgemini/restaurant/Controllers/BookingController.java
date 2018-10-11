@@ -44,7 +44,17 @@ public class BookingController {
 
     @PostMapping("/post")
     public Booking addBooking(@RequestBody Booking newBooking) {
-       return bookingRepository.save(newBooking);
+
+        List<Table> addedTables = new ArrayList<>();
+        for (Table table : newBooking.getTable()) {
+            Optional <Table> findTable = tableRepository.findById(table.getId());
+            if(!findTable.isPresent())
+                throw new UserNotFoundException("Table ID not found");
+            findTable.get().setStatus(TableStatus.RESERVED);
+            addedTables.add(findTable.get());
+        }
+        newBooking.setTable(addedTables);
+        return bookingRepository.save(newBooking);
     }
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})

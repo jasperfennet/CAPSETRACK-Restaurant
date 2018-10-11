@@ -17,18 +17,15 @@ function postData() {
     var amount = $("#inputNumberPersons").val();
     var guest = $("#inputGuest").val();
     var table = $("#inputTable").val();
-//    console.log("postdata stuff: ");
-//    console.log("date: " + date);
-//    console.log("amount: " + amount);
-//    console.log("guest: " + guest);
-//    console.log("table: " + table);
 
     // Create JS object with data.
     var newBooking = {
         date: date,
         amountOfPersons: amount,
         //guest: guest,
-        //table: table
+        table: [{
+                    id: table
+               }]
     };
 
 
@@ -43,26 +40,11 @@ function postData() {
         data: validJsonBooking,
         contentType: "application/json",
         success: function(result) {
-            // On successful post, reload data to get the added one as well.
-
+            // On successful post, reload data to get the added one as well and update the dropdown
             getData();
+            populateTablesDropdown();
         }
     });
-}
-
-function fillUpdateModal(values) {
-    var id = values[0].innerText;
-    var currentDate = values[1].innerText;
-    var currentFirstName = values[2].innerText;
-    var currentLastName = values[3].innerText;
-    var currentAmount = values[4].innerText;
-    var currentTable = values[5].innerText;
-    $("#IdToUpdate").text(id);
-    $("#updateDate").val(currentDate);
-    $("#updateFirstName").val(currentFirstName);
-    $("#updateLastName").val(currentLastName);
-    $("#updateNumberPersons").val(currentAmount);
-    $("#updateTable").val(currentTable);
 }
 
 function updateData() {
@@ -73,7 +55,6 @@ function updateData() {
     var updatedFirstName = $("#updateFirstName").val();
     var updatedLastName = $("#updatedLastName").val();
     var updatedTable = $("#updateTable").val();
-    console.log("tableval (id?): " + updatedTable);
 
     // Create JS object with data.
     var updatedBooking = {
@@ -99,11 +80,27 @@ function updateData() {
         data: validJsonBooking,
         contentType: "application/json",
         success: function(result) {
-            // On successful post, reload data to get the added one as well.
+            // On successful post, reload data to get the added one as well and repopulate the dropdown with updated tables.
             getData();
             populateTablesDropdown();
         }
     });
+}
+
+
+function fillUpdateModal(values) {
+    var id = values[0].innerText;
+    var currentDate = values[1].innerText;
+    var currentFirstName = values[2].innerText;
+    var currentLastName = values[3].innerText;
+    var currentAmount = values[4].innerText;
+    var currentTable = values[5].innerText;
+    $("#IdToUpdate").text(id);
+    $("#updateDate").val(currentDate);
+    $("#updateFirstName").val(currentFirstName);
+    $("#updateLastName").val(currentLastName);
+    $("#updateNumberPersons").val(currentAmount);
+    $("#updateTable").val(currentTable);
 }
 
 function populateTablesDropdown(){
@@ -176,19 +173,7 @@ $(document).ready(function() {
                         });
                         return tables;
                     }
-
-//            function( data, type, row){
-//                        var text = "";
-//                        console.log(data);
-//                        $.each(data, function(index, value) {
-//                            console.log(text);
-//                            text = text + value.number;
-//                        });
-//                        console.log(text);
-//                        return text;
-//                    }
             },
-            //{ data: "table" },
             { data: function() {
                     return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateBookingModal" onclick="fillUpdateModal(this.parentElement.parentElement.children)">Update</button>' + '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
