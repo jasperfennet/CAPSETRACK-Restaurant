@@ -10,7 +10,9 @@ function postBooking() {
     var people = $("#inputPeople").val();
     var phonenr = $("#inputPhone").val();
     var email = $("#inputEmail").val();
+    var inputNewsletter = document.getElementById("inputNewsletter").checked;
 
+     console.log(inputNewsletter);
 
 
     // Create JS object with data.
@@ -22,7 +24,8 @@ function postBooking() {
             emailAddress: email,
             phoneNumber: phonenr,
             userName: username,
-            password: password
+            password: password,
+            newsLetter: inputNewsletter
         },
         amountOfPersons: people
     };
