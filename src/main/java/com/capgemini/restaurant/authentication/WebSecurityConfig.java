@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/Admin/**").fullyAuthenticated()
+                .antMatchers("/admin/**").fullyAuthenticated()
                 .antMatchers("/h2-console/**").hasRole("Owner")
                 .antMatchers("/console/**").hasRole("Owner")
                 .antMatchers("/**").permitAll()
