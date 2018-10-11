@@ -28,15 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/").permitAll()
-                .antMatchers("/*").permitAll()
-                .antMatchers("/scripts/**").permitAll()
-                .antMatchers("/styles/**").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/Admin/**").fullyAuthenticated()
                 .antMatchers("/h2-console/**").hasRole("Owner")
                 .antMatchers("/console/**").hasRole("Owner")
-                .antMatchers("/api/guest/post").permitAll()
-                .antMatchers("/api/booking/post").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().fullyAuthenticated()
 
                 .and()
