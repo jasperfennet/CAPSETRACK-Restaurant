@@ -35,7 +35,7 @@ function postData() {
 
     // Post JSON to endpoint.
     $.ajax({
-        url: "http://localhost:8080/api/booking/post",
+        url: "http://localhost:8080/api/booking/employee/post",
         type: "post",
         data: validJsonBooking,
         contentType: "application/json",
@@ -87,6 +87,25 @@ function updateData() {
     });
 }
 
+function deleteData(id){
+    // Post JSON to endpoint.
+    $.ajax({
+        url: "http://localhost:8080/api/booking/delete/" + id,
+        type: "delete",
+        success: function(result) {
+            // On successful post, reload data to get the added one as well and repopulate the dropdown with updated tables.
+            getData();
+            populateTablesDropdown();
+        }
+    });
+}
+
+function confirmDelete(id){
+    var conf = confirm("Are you sure you want to delete the booking?");
+    if(conf == true){
+        deleteData(id);
+    }
+}
 
 function fillUpdateModal(values) {
     var id = values[0].innerText;
@@ -175,7 +194,7 @@ $(document).ready(function() {
                     }
             },
             { data: function() {
-                    return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateBookingModal" onclick="fillUpdateModal(this.parentElement.parentElement.children)">Update</button>' + '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
+                    return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateBookingModal" onclick="fillUpdateModal(this.parentElement.parentElement.children)">Update</button>' + '<button onclick="confirmDelete(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
             },
         ]
