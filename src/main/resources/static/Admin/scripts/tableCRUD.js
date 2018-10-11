@@ -13,10 +13,16 @@ function getData() {
     });
 }
 
-function deleteTable(tableNR) {
-     console.log(tableNR);
+function confirmDelete(tableId) {
+    var conf = confirm("Are you sure you want to delete the table?");
+    if (conf == true) {
+        deleteTable(tableId);
+    }
+}
+
+function deleteTable(tableId) {
     $.ajax({
-        url: "http://localhost:8080/api/table/delete/" + tableNR,
+        url: "http://localhost:8080/api/table/delete/" + tableId,
         type: "DELETE",
         success: function(result) {
             // On successful post, reload data to get the added one as well.
@@ -79,7 +85,7 @@ $(document).ready(function() {
             { data: "status" },
             {
                 data: function() {
-                    return '<button type="button" class="btn btn-primary">Update</button>' + '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
+                    return '<button type="button" class="btn btn-primary">Update</button>' + '<button onclick="confirmDelete(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
             },
 
