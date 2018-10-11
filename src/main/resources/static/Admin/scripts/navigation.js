@@ -35,6 +35,7 @@ document.querySelector('#navigation').innerHTML =
                <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Home</a></li>
                <li><a href="bookings.html"><i class="fa fa-dashboard fa-fw"></i>Booking</a></li>
                <li><a href="tables.html"><i class="fa fa-dashboard fa-fw"></i>Tables</a></li>
+               <li><a href="guests.html"><i class="fa fa-dashboard fa-fw"></i>Guests</a></li>
                <li><a href="menus.html"><i class="fa fa-dashboard fa-fw"></i>Menus</a></li>
                <li><a href="ingredients.html"><i class="fa fa-dashboard fa-fw"></i>Ingredients</a></li>
                <li><a href="suppliers.html"><i class="fa fa-dashboard fa-fw"></i>Suppliers</a></li>

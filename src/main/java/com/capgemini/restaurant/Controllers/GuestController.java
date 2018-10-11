@@ -13,7 +13,6 @@ import sun.security.util.Password;
 import java.util.Optional;
 
 @CrossOrigin
-@Secured("ROLE_Owner")
 @RestController
 @RequestMapping("/api/guest")
 public class GuestController {
@@ -23,16 +22,18 @@ public class GuestController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Secured({"ROLE_Restaurant","ROLE_Floormanager"})
+    @Secured({"ROLE_Owner", "ROLE_Restaurant","ROLE_Floormanager"})
     @GetMapping("/list")
     public Iterable<Guest> list() {
         return guestRepository.findAll();
     }
-    @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Guest"})
+
+    @Secured({"ROLE_Owner", "ROLE_Restaurant","ROLE_Floormanager","ROLE_Guest"})
     @GetMapping("/get/{id}")
     public Guest findByGuestNR(@PathVariable int id) {
         return guestRepository.findById(id).get();
     }
+
 
     @PostMapping("/post")
     public Guest addGuest(@RequestBody Guest newGuest) {
@@ -46,11 +47,13 @@ public class GuestController {
         newGuest.setPassword(passwordEncoder.encode(newGuest.getPassword()));
         return guestRepository.save(newGuest);
     }
-    @Secured({"ROLE_Floormanager"})
+
+    @Secured({"ROLE_Owner", "ROLE_Floormanager"})
     @DeleteMapping("/delete/{id}")
     public void deleteByGuestNR(@PathVariable int id){ guestRepository.deleteById(id);
     }
-    @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Guest"})
+
+    @Secured({"ROLE_Owner", "ROLE_Restaurant","ROLE_Floormanager","ROLE_Guest"})
     @PutMapping("update/{id}")
     public Guest updateByGuestNR(@PathVariable int id, @RequestBody Guest update){
         Optional<Guest> currentGuest = guestRepository.findById(id);
