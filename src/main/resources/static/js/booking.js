@@ -1,17 +1,25 @@
+function checkPassword() {
+    var password = $("#inputPassword").val();
+    var confirmPassword = $("#confirmPassword").val();
+
+    if (password != confirmPassword) {
+        alert('Your passwords do not match!');
+    } else {
+        postBooking();
+    }
+}
+
 function postBooking() {
     // Get values from html.
     var firstname = $("#inputFirstname").val();
     var lastname = $("#inputLastname").val();
     var username = $("#inputUsername").val();
     var password = $("#inputPassword").val();
-
     var date = $("#inputDate").val();
     var time = $("#inputTime").val();
     var people = $("#inputPeople").val();
     var phonenr = $("#inputPhone").val();
     var email = $("#inputEmail").val();
-
-
 
     // Create JS object with data.
     var newBooking = {
@@ -56,7 +64,7 @@ $(document).ready(function() {
 
     // Modal submit.
     $("#newBookingForm").on('submit', function(e) {
-        postBooking();
+        checkPassword();
     });
 
 })
