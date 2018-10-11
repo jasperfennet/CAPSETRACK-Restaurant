@@ -2,13 +2,18 @@ package com.capgemini.restaurant.Controllers;
 
 import com.capgemini.restaurant.Exceptions.UserNotFoundException;
 import com.capgemini.restaurant.Models.Booking;
+import com.capgemini.restaurant.Models.Table;
+import com.capgemini.restaurant.Models.TableStatus;
 import com.capgemini.restaurant.Repository.BookingRepository;
+import com.capgemini.restaurant.Repository.TableRepository;
 import com.capgemini.restaurant.Repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -20,6 +25,7 @@ public class BookingController {
     private BookingRepository bookingRepository;
 
     @Autowired
+    private TableRepository tableRepository;
     private GuestRepository guestRepository;
 
     @Autowired
@@ -43,6 +49,16 @@ public class BookingController {
 
     @PostMapping("/post")
     public Booking addBooking(@RequestBody Booking newBooking) {
+        List<Table> addedTables = new ArrayList<>();
+        for (Table table : newBooking.getTable()) {
+            Optional <Table> findTable = tableRepository.findById(table.getId());
+            if(!findTable.isPresent())
+                throw new UserNotFoundException("Table ID not found");
+            findTable.get().setStatus(TableStatus.RESERVED);
+            addedTables.add(findTable.get());
+        }
+        newBooking.setTable(addedTables);
+      
         newBooking.getGuest().setPassword(passwordEncoder.encode(newBooking.getGuest().getPassword()));
         newBooking.setGuest(guestRepository.save(newBooking.getGuest()));
         return bookingRepository.save(newBooking);
@@ -64,9 +80,22 @@ public class BookingController {
     public Booking updateByBookingNR(@PathVariable int id, @RequestBody Booking update){
         Optional<Booking> currentBooking = bookingRepository.findById(id);
         if(!currentBooking.isPresent()) {
-            throw new UserNotFoundException("Is Already Present");
+            throw new UserNotFoundException("Booking ID not found.");
         }
-        return bookingRepository.save(update);
+        currentBooking.get().setAmountOfPersons(update.getAmountOfPersons());
+        currentBooking.get().setDate(update.getDate());
+
+        List<Table> addedTables = new ArrayList<>();
+        for (Table table : update.getTable()) {
+            Optional <Table> findTable = tableRepository.findById(table.getId());
+            if(!findTable.isPresent())
+                throw new UserNotFoundException("Table ID not found");
+            findTable.get().setStatus(TableStatus.RESERVED);
+            addedTables.add(findTable.get());
+        }
+
+        currentBooking.get().setTable(addedTables);
+        return bookingRepository.save(currentBooking.get());
     }
 }
 

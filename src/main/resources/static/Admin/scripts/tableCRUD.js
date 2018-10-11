@@ -76,6 +76,7 @@ $(document).ready(function() {
         columns: [
             { data: "number" },
             { data: "capacity" },
+            { data: "status" },
             {
                 data: function() {
                     return '<button type="button" class="btn btn-primary">Update</button>' + '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'

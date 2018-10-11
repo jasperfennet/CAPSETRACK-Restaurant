@@ -15,3 +15,5 @@
 # Out folder
 out/
 *.class
+
+target/

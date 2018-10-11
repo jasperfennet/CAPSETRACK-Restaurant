@@ -12,11 +12,149 @@
 </head>
 <body>
     <div id="wrapper">
-            <div id="navigation"></div>
-    <div id="page-wrapper">
-        <h1>Bookings</h1>
+        <div id="navigation"></div>
+        <div id="page-wrapper">
+            <h1>Bookings</h1>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="bookings">
+                            <thead>
+                                <tr>
+                                    <th>BookingId</th>
+                                    <th>Date</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Number of persons</th>
+                                    <th>Table number</th>
+                                    <th width="150px">Manage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class=“row”>
+                    <div class=“col-md-12”>
+                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#newBookingModal">New Booking</button>
+                    </div>
+                </div>
+
+                <!-- New Booking Modal -->
+                <div id="newBookingModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            
+                <!-- Content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Booking</h4>
+                    </div>
+    
+                    <div class="modal-body">
+    
+                        <form data-toggle="validator" role="form" id="newBookingForm" onsubmit="return false;">
+                            <div class="form-group">
+                                <label for="inputDate" class="control-label">Date</label>
+                                <input type="text" class="form-control" id="inputDate" placeholder="Enter a descriptive title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputNumberPersons" class="control-label">Number of persons</label>
+                                <input type="text" class="form-control" id="inputNumberPersons" placeholder="Enter a descriptive title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputGuest" class="control-label">Guest</label>
+                                <input type="text" class="form-control" id="inputGuest" placeholder="Enter a descriptive title">
+                            </div>
+
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputTitle" class="control-label">Extras</label>-->
+                                <!--<input type="text" class="form-control" id="inputTitle" placeholder="Enter a descriptive title" data-error="DAT IS GEEN NAAM BOYO!" required>-->
+                            <!--</div>-->
+    <!---->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputAuthor" class="control-label">Orders</label>-->
+                                <!--<input type="text" class="form-control" id="inputAuthor" placeholder="Who's the author?" required>-->
+                            <!--</div>-->
+
+                            <div class="form-group">
+                                <label for="inputTable" class="control-label">Table number</label>
+                                <select id="inputTable"></select>
+                            </div>
+    
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button id="closeNew" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+                <!-- End of new Booking Modal -->
+
+                <!--Update Booking Modal-->
+                <div id="updateBookingModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Update Booking</h4><h4 class="modal-title" id="IdToUpdate"></h4>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form data-toggle="validator" role="form" id="updateBookingForm" onsubmit="return false;">
+                                    <div class="form-group">
+                                        <label for="updateDate" class="control-label">Date</label>
+                                        <input type="text" class="form-control" id="updateDate" placeholder="Enter a descriptive title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateNumberPersons" class="control-label">Number of persons</label>
+                                        <input type="text" class="form-control" id="updateNumberPersons" placeholder="Enter a descriptive title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateFirstName" class="control-label">First name</label>
+                                        <input type="text" class="form-control" id="updateFirstName" placeholder="Enter a descriptive title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateLastName" class="control-label">Last name</label>
+                                        <input type="text" class="form-control" id="updateLastName" placeholder="Enter a descriptive title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="updateTable" class="control-label">Table number</label>
+                                        <select id="updateTable"></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button id="closeUpdate" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--End of update Booking Modal-->
+            </div>
+        </div>
     </div>
-</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -24,6 +162,8 @@
 <script src="scripts/metisMenu.min.js"></script>
 <script src="scripts/sb-admin-2.js"></script>
 <script src="scripts/navigation.js"></script>
+<script src="scripts/bookingCRUD.js"></script>
+
 
 </body>
 </html>
