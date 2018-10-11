@@ -52,7 +52,6 @@ function postData() {
         contentType: "application/json",
         success: function(result) {
             // On successful post, reload data to get the added one as well.
-             
             getData();
         }
     });

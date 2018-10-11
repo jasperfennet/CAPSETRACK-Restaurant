@@ -33,7 +33,7 @@ function postBooking() {
     // Convert JS object to JSON.
     var validJsonTable = JSON.stringify(newBooking);
 
-
+    var postResults = null;
     // Post JSON to endpoint.
     $.ajax({
         url: "http://localhost:8080/api/booking/post",
@@ -42,9 +42,16 @@ function postBooking() {
         contentType: "application/json",
         success: function(result) {
             // On successful post, reload data to get the added one as well.
-            alert("Booking Placed");
+            console.log(result);
+            console.log(result.id);
+            $("#bookingNR").text('Booking NR: '+ result.id);
+            $("#BookingDate").text('BookingDate: ' + result.date);
+            $("#AmountOfPersons").text('Total Persons: ' + result.amountOfPersons);
+
+            $("#myModal").modal('toggle')   
         }
     });
+
 }
 
 $(document).ready(function() {

@@ -12,8 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
@@ -21,22 +20,22 @@
 </head>
 
 <!-- Navigation -->
+
 <body>
+<!--------copied nav-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="index.html">Molveno Lake Resort </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">Reserve</a>
+                    <a class="nav-link" href="booking.html">Reserve</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services.html">Groups & Events</a>
+                    <a class="nav-link" href="404.html">Groups & Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="menu.html">Menu</a>
@@ -50,10 +49,10 @@
             </ul>
         </div>
     </div>
+
 </nav>
 
 
-</body>
 <section id="contact" class="section-padding">
     <div class="container">
         <div class="row">
@@ -84,87 +83,112 @@
                 </div>
             </div>
 
-
-            <div class="col-md-8 col-sm-8">
-                <form action="" method="post" role="form" class="contactForm">
-                    <div id="sendmessage">Your booking request has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-
-                    <div class="col-md-6 col-sm-6 contact-form pad-form">
-                        <div class="form-group label-floating is-empty">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                   data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-                            <div class="validation"></div>
-                        </div>
+            <div class="col-md-6 col-sm-6 mr-12">
+                <form class="BookingForm" data-toggle="validator" role="form" id="newBookingForm"
+                      onsubmit="return false;">
+                    <div class="form-group col-md-8">
+                        <label for="inputFirstname" class="control-label">Firstname:</label>
+                        <input type="text" class="form-control" id="inputFirstname" placeholder="Firstname" required>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 contact-form">
-                        <div class="form-group">
-                            <input type="date" class="form-control label-floating is-empty" name="date" id="date"
-                                   placeholder="Date" data-rule="required" data-msg="This field is required"/>
-                            <div class="validation"></div>
-                        </div>
+                    <div class="form-group col-md-8">
+                        <label for="inputLastname" class="control-label">Lastname:</label>
+                        <input type="text" class="form-control" id="inputLastname" placeholder="Lastname" required>
                     </div>
 
-
-                    <div class="col-md-6 col-sm-6 contact-form">
-                        <div class="form-group">
-                            <input type="time" class="form-control label-floating is-empty" name="time" id="time"
-                                   placeholder="Time" data-rule="required" data-msg="This field is required"/>
-                            <div class="validation"></div>
-                        </div>
+                    <div class="form-group col-md-8">
+                        <label for="inputUsername" class="control-label">Username:</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label for="inputPassword" class="control-label">Password:</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="secret" required>
                     </div>
 
-
-                    <div class="col-md-6 col-sm-6 contact-form">
-                        <div class="form-group">
-                            <input type="number" class="form-control label-floating is-empty" name="people" id="people"
-                                   placeholder="People" data-rule="required" data-msg="This field is required"/>
-                            <div class="validation"></div>
-                        </div>
+                    <div class="form-group col-md-8">
+                        <label for="confirmPassword" class="control-label">Confirm Password:</label>
+                        <input type="password" class="form-control" data-match="#inputPassword" id="confirmPassword"
+                               placeholder="secret" required>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 contact-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control label-floating is-empty" name="phone" id="phone"
-                                   placeholder="Country code + Phone Number" data-rule="required"
-                                   data-msg="This field is required"/>
-                            <div class="validation"></div>
-                        </div>
+                    <div class="form-group col-md-8">
+                        <label for="inputDate" class="control-label">Select Reservation Date:</label>
+                        <input type="date" class="form-control" id="inputDate" placeholder="Date" required>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 contact-form pad-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control label-floating is-empty" name="email" id="email"
-                                   placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email"/>
-                            <div class="validation"></div>
-                        </div>
+                    <div class="form-group col-md-8">
+                        <label for="inputTime" class="control-label">Select Reservation Time:</label>
+                        <input type="time" class="form-control" id="inputTime" placeholder="Time" required>
                     </div>
 
-                    <div class="col-md-12 contact-form">
-                        <div class="form-group label-floating is-empty">
-                            <textarea class="form-control" name="message" rows="5" rows="3" data-rule="required"
-                                      data-msg="Please write something for us" placeholder="Message"></textarea>
-                        </div>
-
+                    <div class="form-group col-md-8">
+                        <label for="inputPeople" class="control-label">How many persons:</label>
+                        <input type="number" class="form-control" id="inputPeople" placeholder="e.g. 4" required>
                     </div>
 
-                    <div class="col-md-12 btnpad">
+                    <div class="form-group col-md-8">
+                        <label for="inputPhone" class="control-label">Insert Phone Nr:</label>
+                        <input type="tel" class="form-control" id="inputPhone" placeholder="Country code + Phone Number"
+                               required>
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="inputEmail" class="control-label">What is your Email:</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="example@example.com"
+                               required>
+                    </div>
+
+                    <div class="col-md-12 btnpad form-group">
                         <div class="contacts-btn-pad">
-                            <button class="contacts-btn">Book Table</button>
+                            <button type="submit" class="contacts-btn">Book Table</button>
                         </div>
                     </div>
-
                 </form>
             </div>
+
         </div>
     </div>
+
+    <div class="container">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Reservation Succeeded</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p id="bookingNR"></p>
+                        <p id="BookingDate"></p>
+                        <p id="AmountOfPersons"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
 </section>
 <!-- / contact -->
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
 <script src="js/custom.js"></script>
 <script src="js/booking.js"></script>
 
