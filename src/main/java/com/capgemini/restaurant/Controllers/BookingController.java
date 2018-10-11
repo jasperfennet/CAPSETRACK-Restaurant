@@ -26,6 +26,8 @@ public class BookingController {
 
     @Autowired
     private TableRepository tableRepository;
+
+    @Autowired
     private GuestRepository guestRepository;
 
     @Autowired
@@ -47,8 +49,15 @@ public class BookingController {
         return bookingRepository.findById(id).get();
     }
 
-    @PostMapping("/post")
-    public Booking addBooking(@RequestBody Booking newBooking) {
+    @PostMapping("/guest/post")
+    public Booking addBookingGuest(@RequestBody Booking newBooking) {
+        newBooking.getGuest().setPassword(passwordEncoder.encode(newBooking.getGuest().getPassword()));
+        newBooking.setGuest(guestRepository.save(newBooking.getGuest()));
+        return bookingRepository.save(newBooking);
+    }
+
+    @PostMapping("/employee/post")
+    public Booking addBookingEmployee(@RequestBody Booking newBooking) {
         List<Table> addedTables = new ArrayList<>();
         for (Table table : newBooking.getTable()) {
             Optional <Table> findTable = tableRepository.findById(table.getId());
@@ -58,11 +67,7 @@ public class BookingController {
             addedTables.add(findTable.get());
         }
         newBooking.setTable(addedTables);
-      
-        newBooking.getGuest().setPassword(passwordEncoder.encode(newBooking.getGuest().getPassword()));
-        newBooking.setGuest(guestRepository.save(newBooking.getGuest()));
         return bookingRepository.save(newBooking);
-
     }
 
     @Secured({"ROLE_Restaurant","ROLE_Floormanager","ROLE_Owner"})
